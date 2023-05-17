@@ -10,5 +10,5 @@ diagram
 https://drive.google.com/file/d/15vTj1idYwrCDMa_P3krb3Xp6gszE9wpY/view?usp=sharing
 
 task management
-https://app.nuclino.com/devnub/fish-frenzy
+https://app.hacknplan.com/p/186891/kanban?categoryId=0&boardId=509684
 

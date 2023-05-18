@@ -20,7 +20,11 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.W)){
             inputVector+= playerCamera.cameraDirection;
         }
-        inputVector=inputVector.normalized;
+        else if (Input.GetKey(KeyCode.S))
+            {
+                inputVector -= playerCamera.cameraDirection;
+            }
+        inputVector =inputVector.normalized;
         transform.position+=inputVector*Time.deltaTime*speed;
     }
 }

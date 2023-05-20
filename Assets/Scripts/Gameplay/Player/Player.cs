@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 7;
-    [SerializeField] private float sprintSpeedMultiplier = 8f; // Additional speed when sprinting
+    [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
 
     private bool isSprinting = false; // Flag to track if the player is sprinting

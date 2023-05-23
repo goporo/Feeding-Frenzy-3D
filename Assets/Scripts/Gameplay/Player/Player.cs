@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
+    private Fish playerFish = new Fish();
+    [SerializeField] private Fish testFish;
+
+
 
     private bool isSprinting = false; // Flag to track if the player is sprinting
 
@@ -43,7 +47,22 @@ public class Player : MonoBehaviour
             isSprinting = false;
             inputVector *= speed;
         }
-
+        // Test Attack and Eat func
+        if(Input.GetKey(KeyCode.Z)){
+            Debug.Log("attack");
+            this.playerFish.Attack(this.testFish);
+        }
+        if(Input.GetKey(KeyCode.X)){
+            this.playerFish.Eat(this.testFish);
+        }
         transform.position += inputVector * Time.deltaTime;
+        
+    }
+        private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Fish")
+        {
+            this.playerFish.Eat(other.GetComponent<Fish>());
+        }
     }
 }

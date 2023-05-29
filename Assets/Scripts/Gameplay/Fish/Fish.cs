@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Fish : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Fish : MonoBehaviour
     [SerializeField] private float exp = 0;
     [SerializeField] private float level = 1;
     [SerializeField] private GameObject visualObject; // Object that hold the fish
-
+    // public event EventHandler onColliderWithMouth;
 
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // onColliderWithMouth?.Invoke(this,System.EventArgs.Empty);
     }
     public void Attack(Fish otherFish)
     {
@@ -37,6 +38,7 @@ public class Fish : MonoBehaviour
     public void Eat(Fish otherFish)
     {
         Debug.Log("Fish ate");
+        Debug.Log(otherFish);
         otherFish.visualObject.SetActive(false);
         this.exp += 1;
         this.exp += otherFish.level;

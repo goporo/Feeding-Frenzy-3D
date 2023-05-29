@@ -60,9 +60,10 @@ public class Player : MonoBehaviour
     }
         private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Fish")
+        if (other.gameObject.tag == "FishBody")
         {
-            this.playerFish.Eat(other.GetComponent<Fish>());
+            // this.playerFish.Eat(other.GetComponent<Fish>());
+            // Debug.Log(this.GetComponent<Collider>().name);
         }
     }
 }

@@ -21,13 +21,13 @@ public class PlayerCamera : MonoBehaviour
 
     }
 
-    
+
     void Update()
     {
         // Collect Mouse Input
 
-        float inputX = Input.GetAxis("Mouse X")*mouseSensitivity*Time.deltaTime;
-        float inputY = Input.GetAxis("Mouse Y")*mouseSensitivity*Time.deltaTime;
+        float inputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         // Rotate the Camera around its local X axis
 

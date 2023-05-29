@@ -7,7 +7,7 @@ public class Fish : MonoBehaviour
 {
     // [SerializeField] FishType 
     [SerializeField] private float size = 1;
-    [SerializeField] private float speed;
+    [SerializeField] protected float speed;
     [SerializeField] private float sprintSpeed; // speed when left shift
     [SerializeField] private float damage = 10;
     [SerializeField] private float health = 100;
@@ -42,9 +42,10 @@ public class Fish : MonoBehaviour
         otherFish.visualObject.SetActive(false);
         this.exp += 1;
         this.exp += otherFish.level;
-        if(this.exp >= this.level*2){
-            this.exp = this.exp - this.level*2;
-            this.level+=1;
+        if (this.exp >= this.level * 2)
+        {
+            this.exp = this.exp - this.level * 2;
+            this.level += 1;
         }
     }
 

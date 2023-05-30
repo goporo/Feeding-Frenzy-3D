@@ -13,9 +13,10 @@ public class Fish : MonoBehaviour
     [SerializeField] private float health = 100;
     [SerializeField] private float exp = 0;
     [SerializeField] private float level = 1;
+    [SerializeField] private float maxExp = 2;
     [SerializeField] private GameObject visualObject; // Object that hold the fish
     // public event EventHandler onColliderWithMouth;
-
+    public event EventHandler onLevelUp;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // onColliderWithMouth?.Invoke(this,System.EventArgs.Empty);
+        // this.size += 0.1f * Time.deltaTime;
     }
     public void Attack(Fish otherFish)
     {
@@ -39,23 +40,29 @@ public class Fish : MonoBehaviour
     {
         Debug.Log("Fish ate");
         Debug.Log(otherFish);
-        otherFish.visualObject.SetActive(false);
-        this.exp += 1;
-        this.exp += otherFish.level;
-        if (this.exp >= this.level * 2)
+        if (this.size >= otherFish.size)
         {
-            this.exp = this.exp - this.level * 2;
-            this.level += 1;
+            otherFish.visualObject.SetActive(false);
+            // Take exp from otherFish
+            this.exp += 1;
+            this.exp += otherFish.level;
+            if (this.exp >= this.maxExp)
+            {
+                // if exp > Max exp in this level, Levelup this fish
+                LevelUp(otherFish);
+            }
         }
     }
-
-    // Check collision for player and fish 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log("Eat");
-    //     if (other.gameObject.tag == "Fish")
-    //     {
-    //         Debug.Log(other.GetComponent<Fish>());
-    //     }
-    // }
+    private void LevelUp(Fish otherFish)
+    {
+        this.exp = this.exp - this.maxExp;
+        this.level += 1;
+        this.maxExp = this.level*2;
+        Debug.Log("Level Up Fish");
+        onLevelUp?.Invoke(this,EventArgs.Empty);
+    }
+    public float GetSize()
+    {
+        return this.size;
+    }
 }

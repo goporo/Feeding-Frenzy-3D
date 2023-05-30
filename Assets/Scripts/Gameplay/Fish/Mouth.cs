@@ -8,10 +8,6 @@ public class Mouth : MonoBehaviour
     {
         if (other.gameObject.tag == "FishBody")
         {
-            // this.playerFish.Eat(other.GetComponent<Fish>());
-            // this.GetComponentInParent
-            // Debug.Log(other.gameObject.name);
-            // other.GetComponent<Fish>().onColliderWithMouth += 
             this.GetComponentInParent<Fish>().Eat(other.gameObject.GetComponentInParent<Fish>());
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
-    private Fish playerFish = new Fish();
+    [SerializeField] private Fish playerFish;
     [SerializeField] private Fish testFish;
 
 
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.playerFish.onLevelUp += GrowUp;  
     }
 
     // Update is called once per frame
@@ -56,14 +57,13 @@ public class Player : MonoBehaviour
             this.playerFish.Eat(this.testFish);
         }
         transform.position += inputVector * Time.deltaTime;
-        
+        // Debug.Log(playerFish.GetSize());
+        // Debug.Log(transform.localScale);
     }
-        private void OnTriggerEnter(Collider other)
+
+    private void GrowUp(object sender, EventArgs e)
     {
-        if (other.gameObject.tag == "FishBody")
-        {
-            // this.playerFish.Eat(other.GetComponent<Fish>());
-            // Debug.Log(this.GetComponent<Collider>().name);
-        }
+        Debug.Log("Level Up Player");
+        transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -479,7 +479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441094771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -1.59}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -507,6 +507,7 @@ MonoBehaviour:
   health: 100
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 190424556}
 --- !u!1001 &461383672
 PrefabInstance:
@@ -714,6 +715,7 @@ MonoBehaviour:
   health: 100
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 525812494}
   numWaypoints: 5
   patrolRange: 20
@@ -835,6 +837,7 @@ MonoBehaviour:
   health: 100
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 571547135}
   numWaypoints: 5
   patrolRange: 20
@@ -1356,6 +1359,7 @@ MonoBehaviour:
   health: 100
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 828568801}
   numWaypoints: 5
   patrolRange: 20
@@ -1743,7 +1747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177048581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.59}
+  m_LocalPosition: {x: 0, y: 0, z: 0.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2061,6 +2065,7 @@ MonoBehaviour:
   speed: 7
   sprintSpeedMultiplier: 2
   playerCamera: {fileID: 963194229}
+  playerFish: {fileID: 441094773}
   testFish: {fileID: 1551813872}
 --- !u!1 &1551813871
 GameObject:
@@ -2098,6 +2103,7 @@ MonoBehaviour:
   health: 0
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 1551813871}
 --- !u!4 &1551813873
 Transform:
@@ -2449,6 +2455,7 @@ MonoBehaviour:
   health: 100
   exp: 0
   level: 1
+  maxExp: 2
   visualObject: {fileID: 1974990009}
   numWaypoints: 5
   patrolRange: 20

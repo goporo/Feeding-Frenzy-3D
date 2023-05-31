@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
     private void GrowUp(object sender, EventArgs e)
     {
         Debug.Log("Level Up Player");
-        transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
+        // transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
+        transform.localScale = new Vector3(1,1,1);
     }
 }

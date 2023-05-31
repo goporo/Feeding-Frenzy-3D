@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1dfca730be68b324498f69b434ed17f6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fishV0Prefab: {fileID: 5105224423886067382, guid: 091fd39d7adb8654cbbc0ec7fc978dcf, type: 3}
+  - fishV1Prefab: {fileID: 222828481405484951, guid: aeb1e9e1e2d5e014cbe04ba97df8a30e, type: 3}
+  - fishV2Prefab: {fileID: 5456485053181467293, guid: e7f5d487b01d7ca439435d4b966804b5, type: 3}
+  - fishV3Prefab: {fileID: 217453769884866227, guid: de500f6b90f89bc4c87a6585b2dea01a, type: 3}
+  - fishV4Prefab: {fileID: 2604399426268257837, guid: a05072560c3476b4cb8dddf22f697392, type: 3}
+  - sharkPrefab: {fileID: 1496790786100844414, guid: cda07ba7b4e803244b2500eedea8946f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

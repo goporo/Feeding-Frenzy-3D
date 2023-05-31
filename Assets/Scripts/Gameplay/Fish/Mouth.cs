@@ -6,7 +6,7 @@ public class Mouth : MonoBehaviour
 {
         private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "FishBody")
+        if ((other.gameObject.tag == "FishBody" || other.gameObject.tag == "FishMouth")  && other.gameObject.GetComponentInParent<Fish>() !=  this.GetComponentInParent<Fish>())
         {
             this.GetComponentInParent<Fish>().Eat(other.gameObject.GetComponentInParent<Fish>());
         }

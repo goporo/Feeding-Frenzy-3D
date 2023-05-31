@@ -14,20 +14,19 @@ public class Fish : MonoBehaviour
     [SerializeField] private float exp = 0;
     [SerializeField] private float level = 1;
     [SerializeField] private float maxExp = 2;
-    [SerializeField] private GameObject visualObject; // Object that hold the fish
-    // public event EventHandler onColliderWithMouth;
+    [SerializeField] public GameObject visualObject; // Object that hold the fish
     public event EventHandler onLevelUp;
-
     // Start is called before the first frame update
     void Start()
     {
-
     }
+
 
     // Update is called once per frame
     void Update()
     {
         // this.size += 0.1f * Time.deltaTime;
+        // onEating?.Invoke(this,EventArgs.Empty);
     }
     public void Attack(Fish otherFish)
     {
@@ -43,6 +42,11 @@ public class Fish : MonoBehaviour
         if (this.size >= otherFish.size)
         {
             otherFish.visualObject.SetActive(false);
+            //     onEating?.Invoke(this, new FishEaten
+            // {
+            //     otherFish = otherFish
+            // });
+            FishSpawner.RespawnFish(otherFish);
             // Take exp from otherFish
             this.exp += 1;
             this.exp += otherFish.level;
@@ -53,13 +57,15 @@ public class Fish : MonoBehaviour
             }
         }
     }
+
     private void LevelUp(Fish otherFish)
     {
         this.exp = this.exp - this.maxExp;
         this.level += 1;
-        this.maxExp = this.level*2;
+        this.maxExp = this.level * 2;
+        this.size = this.level;
         Debug.Log("Level Up Fish");
-        onLevelUp?.Invoke(this,EventArgs.Empty);
+        onLevelUp?.Invoke(this, EventArgs.Empty);
     }
     public float GetSize()
     {

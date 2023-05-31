@@ -17,7 +17,7 @@ public class AIFish : Fish
         currentWaypointIndex = 0;
         foreach (Transform waypoint in waypoints)
         {
-            Debug.Log("Waypoint: " + waypoint.position);
+            // Debug.Log("Waypoint: " + waypoint.position);
         }
     }
 

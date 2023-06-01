@@ -10,16 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private Fish playerFish;
-    [SerializeField] private Fish testFish;
-
-
+    [SerializeField] private Mesh level1Mesh;
+    [SerializeField] private Mesh level2Mesh;
+    [SerializeField] private Mesh level3Mesh;
 
     private bool isSprinting = false; // Flag to track if the player is sprinting
 
     // Start is called before the first frame update
     void Start()
     {
-        this.playerFish.onLevelUp += GrowUp;  
+        this.playerFish.onLevelUp += GrowUp;
     }
 
     // Update is called once per frame
@@ -50,13 +50,13 @@ public class Player : MonoBehaviour
             inputVector *= speed;
         }
         // Test Attack and Eat func
-        if(Input.GetKey(KeyCode.Z)){
-            Debug.Log("attack");
-            this.playerFish.Attack(this.testFish);
-        }
-        if(Input.GetKey(KeyCode.X)){
-            this.playerFish.Eat(this.testFish);
-        }
+        // if(Input.GetKey(KeyCode.Z)){
+        //     Debug.Log("attack");
+        //     this.playerFish.Attack(this.testFish);
+        // }
+        // if(Input.GetKey(KeyCode.X)){
+        //     this.playerFish.Eat(this.testFish);
+        // }
         transform.position += inputVector * Time.deltaTime;
         // Debug.Log(playerFish.GetSize());
         // Debug.Log(transform.localScale);
@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Level Up Player");
         // transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
-        transform.localScale = new Vector3(1,1,1);
+        // if(playerFish.GetLevel()>3){
+        playerFish.GetComponentInChildren<MeshFilter>().mesh = level1Mesh;
+        // }
     }
 }

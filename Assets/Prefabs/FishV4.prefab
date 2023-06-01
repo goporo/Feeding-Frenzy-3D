@@ -12,6 +12,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1272374852726147370, guid: 1c71d88ac5e99e74893d912c0683df76, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272374852726147370, guid: 1c71d88ac5e99e74893d912c0683df76, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -102,8 +106,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.284
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141,13 +157,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Name
       value: FishV4
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.395
+      value: -0.791
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -157,8 +177,43 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+--- !u!1 &2604399426268257837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+  m_PrefabInstance: {fileID: 7133079392281151643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6633018791716918880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604399426268257837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  speed: 0
+  sprintSpeed: 0
+  damage: 10
+  health: 100
+  exp: 0
+  level: 1
+  maxExp: 2
+  visualObject: {fileID: 0}
+  fishSpawner: {fileID: 0}
+  numWaypoints: 5
+  patrolRange: 30
+  rotationSpeed: 5
+  swimSpeed: 3
 --- !u!4 &2604399426268257843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}

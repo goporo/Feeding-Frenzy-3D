@@ -12,6 +12,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.122
       objectReference: {fileID: 0}
@@ -51,13 +63,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Name
       value: FishV3
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -69,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7377014405729669210, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Radius
-      value: 0.05
+      value: 0.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
@@ -78,6 +98,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
   m_PrefabInstance: {fileID: 5034439020855033861}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &217453769884866227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+  m_PrefabInstance: {fileID: 5034439020855033861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &747385652591355156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217453769884866227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  speed: 0
+  sprintSpeed: 0
+  damage: 10
+  health: 100
+  exp: 0
+  level: 1
+  maxExp: 2
+  visualObject: {fileID: 0}
+  fishSpawner: {fileID: 0}
+  numWaypoints: 5
+  patrolRange: 30
+  rotationSpeed: 5
+  swimSpeed: 3
 --- !u!1001 &5886499767335915428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +139,18 @@ PrefabInstance:
     - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579497082370369827, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2206852426022253465, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_Name

@@ -12,6 +12,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -51,13 +63,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Name
       value: FishV2
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.377
+      value: -1.165
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -67,6 +83,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7377014405729669210, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
 --- !u!4 &5456485053181467267 stripped
@@ -74,6 +94,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
   m_PrefabInstance: {fileID: 963826050033028139}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5456485053181467293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+  m_PrefabInstance: {fileID: 963826050033028139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6905552655434750678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456485053181467293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  speed: 0
+  sprintSpeed: 0
+  damage: 10
+  health: 100
+  exp: 0
+  level: 1
+  maxExp: 2
+  visualObject: {fileID: 0}
+  fishSpawner: {fileID: 0}
+  numWaypoints: 5
+  patrolRange: 30
+  rotationSpeed: 5
+  swimSpeed: 3
 --- !u!1001 &9061985608393339422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,6 +145,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -132,6 +195,10 @@ PrefabInstance:
     - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961854119965240234, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770584863604633872, guid: f9d7e343baad9cd4e8ba03bc5c742d4c, type: 3}
       propertyPath: m_Name

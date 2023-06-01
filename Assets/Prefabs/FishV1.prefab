@@ -20,6 +20,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -58,6 +70,10 @@ PrefabInstance:
     - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 736482141215372739, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7317411005216613472, guid: a57dd5b18096a6543ae293a7737d3274, type: 3}
       propertyPath: m_IsTrigger
@@ -98,6 +114,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -137,6 +165,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Name
       value: FishV1
@@ -147,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.334
+      value: -1.509
       objectReference: {fileID: 0}
     - target: {fileID: 5705043249280859285, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -157,6 +189,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7377014405729669210, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
 --- !u!4 &222828481405484937 stripped
@@ -164,3 +200,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
   m_PrefabInstance: {fileID: 5030173073360546081}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &222828481405484951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5105224423886067382, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+  m_PrefabInstance: {fileID: 5030173073360546081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9151530699682940045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222828481405484951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  speed: 0
+  sprintSpeed: 0
+  damage: 10
+  health: 100
+  exp: 0
+  level: 1
+  maxExp: 2
+  visualObject: {fileID: 0}
+  fishSpawner: {fileID: 0}
+  numWaypoints: 5
+  patrolRange: 30
+  rotationSpeed: 5
+  swimSpeed: 3

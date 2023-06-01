@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5105224423886067368}
   - component: {fileID: 5105224423886067369}
+  - component: {fileID: 842163209954064541}
   m_Layer: 0
   m_Name: FishV0
   m_TagString: Untagged
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5105224423886067382}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1e67a028b78bba41be083c6b54691a6, type: 3}
   m_Name: 
@@ -55,6 +56,33 @@ MonoBehaviour:
   level: 1
   maxExp: 2
   visualObject: {fileID: 5105224423886067382}
+  fishSpawner: {fileID: 0}
+--- !u!114 &842163209954064541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105224423886067382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  speed: 0
+  sprintSpeed: 0
+  damage: 10
+  health: 100
+  exp: 0
+  level: 1
+  maxExp: 2
+  visualObject: {fileID: 5105224423886067382}
+  fishSpawner: {fileID: 0}
+  numWaypoints: 5
+  patrolRange: 30
+  rotationSpeed: 5
+  swimSpeed: 3
 --- !u!1 &5105224425135332407
 GameObject:
   m_ObjectHideFlags: 0

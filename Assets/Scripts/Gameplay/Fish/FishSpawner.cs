@@ -41,7 +41,14 @@ public class FishSpawner : MonoBehaviour
     public static void RespawnFish(Fish otherFish)
     {
         // otherFish.visualObject=sharkPrefab;
-        int newSize = UnityEngine.Random.Range(1,5);
+        int newSize = UnityEngine.Random.Range(1,11);
+        if(newSize<=6){
+            newSize=6;
+        }else if(newSize<10){
+            newSize=3;
+        }else{
+            newSize=6;
+        }
         otherFish.SetSize(newSize);
         otherFish.transform.localScale = new Vector3(otherFish.GetSize(),otherFish.GetSize(),otherFish.GetSize());
         otherFish.transform.position=new Vector3(GetX(),UnityEngine.Random.Range(-25,25),GetZ());

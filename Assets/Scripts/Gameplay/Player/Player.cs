@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
     {
         this.playerFish.onLevelUp += GrowUp;
     }
-
+    private void Awake() {
+        playerFish.GetComponentInChildren<MeshFilter>().mesh = level1Mesh;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -66,8 +68,10 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Level Up Player");
         // transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
-        // if(playerFish.GetLevel()>3){
-        playerFish.GetComponentInChildren<MeshFilter>().mesh = level1Mesh;
-        // }
+        if(playerFish.GetLevel()>5){
+            playerFish.GetComponentInChildren<MeshFilter>().mesh = level2Mesh;
+        }else if(playerFish.GetLevel()>3){
+            playerFish.GetComponentInChildren<MeshFilter>().mesh = level3Mesh;
+        }
     }
 }

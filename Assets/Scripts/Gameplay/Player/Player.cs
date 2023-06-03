@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
+    [SerializeField] private EndGameCamera endGameCamera;
     [SerializeField] private Fish playerFish;
     [SerializeField] private Mesh level1Mesh;
     [SerializeField] private Mesh level2Mesh;
@@ -21,8 +22,11 @@ public class Player : MonoBehaviour
     {
         this.playerFish.onLevelUp += GrowUp;
     }
-    private void Awake() {
+
+    private void Awake()
+    {
         playerFish.GetComponentInChildren<MeshFilter>().mesh = level1Mesh;
+        playerFish.swimSpeed=speed;
     }
     // Update is called once per frame
     void Update()
@@ -44,34 +48,51 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isSprinting = true;
-            inputVector *= speed * sprintSpeedMultiplier;
+            inputVector *= playerFish.swimSpeed * sprintSpeedMultiplier;
         }
         else
         {
             isSprinting = false;
-            inputVector *= speed;
+            inputVector *= playerFish.swimSpeed;
         }
-        // Test Attack and Eat func
-        // if(Input.GetKey(KeyCode.Z)){
-        //     Debug.Log("attack");
-        //     this.playerFish.Attack(this.testFish);
+        Debug.Log(isSprinting);
+        // if (Input.GetKey(KeyCode.Z))
+        // {
+        //     this.playerFish.Eat(this.playerFish);
         // }
-        // if(Input.GetKey(KeyCode.X)){
-        //     this.playerFish.Eat(this.testFish);
-        // }
-        transform.position += inputVector * Time.deltaTime;
-        // Debug.Log(playerFish.GetSize());
-        // Debug.Log(transform.localScale);
+        if (!((transform.position.y-this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight())<0))
+        {
+            transform.position -= new Vector3(0,15*Time.deltaTime,0);
+        }
+            transform.position += inputVector * Time.deltaTime;
     }
 
     private void GrowUp(object sender, EventArgs e)
     {
-        Debug.Log("Level Up Player");
+        // Debug.Log("Level Up Player");
         // transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
-        if(playerFish.GetLevel()>5){
+        if (playerFish.GetLevel() > 5)
+        {
             playerFish.GetComponentInChildren<MeshFilter>().mesh = level2Mesh;
-        }else if(playerFish.GetLevel()>3){
+        }
+        else if (playerFish.GetLevel() > 3)
+        {
             playerFish.GetComponentInChildren<MeshFilter>().mesh = level3Mesh;
         }
+    }
+    public float getExp(){
+        return this.playerFish.GetExp();
+    }
+    public float getLevel(){
+        return this.playerFish.GetLevel();
+    }
+    public float getMaxExp(){
+        return this.playerFish.GetMaxExp();
+    }
+    public float GetScore(){
+        return this.playerFish.GetScore();
+    }
+    public EndGameCamera GetEndGameCamera() {
+        return this.endGameCamera;
     }
 }

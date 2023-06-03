@@ -3,12 +3,15 @@ using System.Collections;
 
 public class UnderWaterScript : MonoBehaviour
 {
-    public float waterHeight;
+    [SerializeField] private GameObject waterPlane;
+    [SerializeField] private float waterHeight;
 
     private bool isUnderwater;
     private Color normalColor =  new Color(0.5f, 0.5f, 0.5f, 0f);
     private Color underwaterColor = new Color(0.12f, 0.3f, 0.45f, 0f);
-
+    private void Awake() {
+        waterHeight = waterPlane.transform.position.y;
+    }
     // Use this for initialization
     void Start()
     {
@@ -40,5 +43,11 @@ public class UnderWaterScript : MonoBehaviour
         RenderSettings.fogColor = underwaterColor;
         RenderSettings.fogDensity = 0.01f;
 
+    }
+    public bool GetUnderwater(){
+        return isUnderwater;
+    }
+    public float GetWaterHeight(){
+        return waterHeight;
     }
 }

@@ -119,6 +119,7 @@ MonoBehaviour:
   exp: 0
   level: 1
   maxExp: 2
+  score: 3
   visualObject: {fileID: 0}
   fishSpawner: {fileID: 0}
   numWaypoints: 5

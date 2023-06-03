@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5105224423886067382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.07, y: 7.734, z: 23.69}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4707352247303084618}
@@ -47,14 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e67a028b78bba41be083c6b54691a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 3
   speed: 0
   sprintSpeed: 0
   damage: 0
   health: 0
   exp: 0
-  level: 1
+  level: 3
   maxExp: 2
+  score: 3
   visualObject: {fileID: 5105224423886067382}
   fishSpawner: {fileID: 0}
 --- !u!114 &842163209954064541
@@ -77,6 +78,7 @@ MonoBehaviour:
   exp: 0
   level: 1
   maxExp: 2
+  score: 3
   visualObject: {fileID: 5105224423886067382}
   fishSpawner: {fileID: 0}
   numWaypoints: 5

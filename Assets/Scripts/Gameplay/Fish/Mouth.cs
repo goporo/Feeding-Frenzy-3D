@@ -10,5 +10,9 @@ public class Mouth : MonoBehaviour
         {
             this.GetComponentInParent<Fish>().Eat(other.gameObject.GetComponentInParent<Fish>());
         }
+        if((other.gameObject.tag == "Present")){
+            other.gameObject.SetActive(false);
+            this.GetComponentInParent<Fish>().TakePresent();
+        }
     }
 }

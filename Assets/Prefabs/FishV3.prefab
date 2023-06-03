@@ -68,6 +68,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -123,6 +131,7 @@ MonoBehaviour:
   exp: 0
   level: 1
   maxExp: 2
+  score: 3
   visualObject: {fileID: 0}
   fishSpawner: {fileID: 0}
   numWaypoints: 5

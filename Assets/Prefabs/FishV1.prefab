@@ -115,15 +115,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -164,6 +164,14 @@ PrefabInstance:
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: level
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Enabled
@@ -225,6 +233,7 @@ MonoBehaviour:
   exp: 0
   level: 1
   maxExp: 2
+  score: 3
   visualObject: {fileID: 0}
   fishSpawner: {fileID: 0}
   numWaypoints: 5

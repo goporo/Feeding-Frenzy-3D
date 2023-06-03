@@ -5,7 +5,6 @@ public class AIFish : Fish
     [SerializeField] private int numWaypoints = 5; // Number of random waypoints to generate
     [SerializeField] private float patrolRange = 30f; // Range within which to generate random waypoints
     [SerializeField] private float rotationSpeed = 5f; // Speed to rotate towards the next waypoint
-    [SerializeField] private float swimSpeed = 3f; // Speed at which the fish swims
 
     private Transform[] waypoints; // Array of randomly generated waypoints
     private int currentWaypointIndex; // Index of the current waypoint

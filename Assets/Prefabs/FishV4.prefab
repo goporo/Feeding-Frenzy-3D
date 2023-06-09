@@ -107,15 +107,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -159,11 +159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: size
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: level
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Enabled
@@ -209,20 +209,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  speed: 0
   sprintSpeed: 0
   damage: 10
   health: 100
   exp: 0
   level: 1
   maxExp: 2
+  swimSpeed: 3
   score: 3
   visualObject: {fileID: 0}
   fishSpawner: {fileID: 0}
   numWaypoints: 5
   patrolRange: 30
   rotationSpeed: 5
-  swimSpeed: 3
 --- !u!4 &2604399426268257843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}

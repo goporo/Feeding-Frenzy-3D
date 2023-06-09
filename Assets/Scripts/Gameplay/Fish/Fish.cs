@@ -7,7 +7,6 @@ public class Fish : MonoBehaviour
 {
     // [SerializeField] FishType 
     [SerializeField] private int size = 1;
-    [SerializeField] protected float speed;
     [SerializeField] private float sprintSpeed; // speed when left shift
     [SerializeField] private float damage = 10;
     [SerializeField] private float health = 100;
@@ -18,6 +17,8 @@ public class Fish : MonoBehaviour
     [SerializeField] private float score = 0;
     [SerializeField] public GameObject visualObject; // Object that hold the fish
     [SerializeField] public FishSpawner fishSpawner; // Object that hold the fish
+    private Animator fishAnimator;
+
     public event EventHandler onLevelUp;
     // public event EventHandler<onEatingObject> onEating;
     // public class onEatingObject: EventArgs{
@@ -26,6 +27,7 @@ public class Fish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fishAnimator = GetComponent<Animator>();
     }
 
 
@@ -34,6 +36,10 @@ public class Fish : MonoBehaviour
     {
         // this.size += 0.1f * Time.deltaTime;
         // onEating?.Invoke(this,EventArgs.Empty);
+    }
+    public void SetIsSwimming(bool value)
+    {
+        fishAnimator.SetBool("isSwimming", value);
     }
     public void Attack(Fish otherFish)
     {
@@ -48,7 +54,8 @@ public class Fish : MonoBehaviour
         // Debug.Log(otherFish);
         if (this.size >= otherFish.size)
         {
-            if(otherFish.GetComponentInParent<Player>()){
+            if (otherFish.GetComponentInParent<Player>())
+            {
                 Endgame(otherFish);
             }
             // Disable fish and then respawn them
@@ -57,7 +64,7 @@ public class Fish : MonoBehaviour
             // Take exp from otherFish
             this.exp += 1;
             this.exp += otherFish.level;
-            this.score += 10 + otherFish.level*10;
+            this.score += 10 + otherFish.level * 10;
             if (this.exp >= this.maxExp)
             {
                 // if exp > Max exp in this level, Levelup this fish
@@ -67,10 +74,11 @@ public class Fish : MonoBehaviour
     }
     public void TakePresent()
     {
-        this.swimSpeed *=2;
+        this.swimSpeed *= 2;
     }
-    private void Endgame(Fish otherFish){
-        Time.timeScale=0;
+    private void Endgame(Fish otherFish)
+    {
+        Time.timeScale = 0;
         otherFish.GetComponentInParent<Player>().GetEndGameCamera().OpenEndGameMenu();
         otherFish.GetComponentInParent<Player>().gameObject.SetActive(false);
     }
@@ -99,13 +107,16 @@ public class Fish : MonoBehaviour
     {
         this.level = level;
     }
-    public float GetExp(){
+    public float GetExp()
+    {
         return this.exp;
     }
-    public float GetMaxExp(){
+    public float GetMaxExp()
+    {
         return this.maxExp;
     }
-    public float GetScore(){
+    public float GetScore()
+    {
         return this.score;
     }
 }

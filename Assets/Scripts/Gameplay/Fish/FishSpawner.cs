@@ -22,7 +22,6 @@ public class FishSpawner : MonoBehaviour
     private void Awake()
     {
         fishSpawner = new GameObject[TOTAL_FISH];
-        Debug.Log(fishSpawner.Length);
         for (int i = 0; i < TOTAL_FISH; i++)
         {
             fishSpawner[i] = ChooseRandomFish(UnityEngine.Random.Range(0, 5));

@@ -8,23 +8,34 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
-    [SerializeField] private Fish playerFish;
+    private Fish currentFish;
+    [SerializeField] private GameObject Fish1;
+    [SerializeField] private GameObject Fish2;
+    [SerializeField] private GameObject Fish3;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        this.playerFish.onLevelUp += GrowUp;
+        Fish1.SetActive(true);
+        currentFish = Fish1.GetComponent<Fish>();
+        this.currentFish.onLevelUp += GrowUp;
     }
 
-    private void Awake()
-    {
-        playerFish.swimSpeed = speed;
-    }
+
     // Update is called once per frame
     void Update()
     {
+        // test leveling up by click
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     Fish1.SetActive(false);
+        //     Fish2.SetActive(true);
+        //     currentFish = Fish2.GetComponent<Fish>();
+        // }
+
         Vector3 inputVector = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -42,54 +53,59 @@ public class Player : MonoBehaviour
         // Check if the Shift key is held down to sprint
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            inputVector *= playerFish.swimSpeed * sprintSpeedMultiplier;
+            inputVector *= speed * sprintSpeedMultiplier;
         }
         else
         {
-            inputVector *= playerFish.swimSpeed;
+            inputVector *= speed;
         }
 
-        playerFish.SetIsSwimming(inputVector.magnitude > 0);
+        currentFish.SetIsSwimming(inputVector.magnitude > 0);
 
         // if (Input.GetKey(KeyCode.Z))
         // {
-        //     this.playerFish.Eat(this.playerFish);
+        //     this.currentFish.Eat(this.currentFish);
         // }
         if (!((transform.position.y - this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight()) < 0))
         {
             transform.position -= new Vector3(0, 15 * Time.deltaTime, 0);
         }
         transform.position += inputVector * Time.deltaTime;
+
+
     }
 
     private void GrowUp(object sender, EventArgs e)
     {
-        // Debug.Log("Level Up Player");
-        // transform.localScale = new Vector3(playerFish.GetSize()*2,playerFish.GetSize()*2,playerFish.GetSize()*2);
-        if (playerFish.GetLevel() > 5)
+        // suspected of causing bug
+        if (currentFish.GetLevel() > 5)
         {
-            // playerFish.GetComponentInChildren<MeshFilter>().mesh = level2Mesh;
+            Fish3.SetActive(true);
+            currentFish = Fish3.GetComponent<Fish>();
+            Fish2.SetActive(false);
         }
-        else if (playerFish.GetLevel() > 3)
+        else if (currentFish.GetLevel() > 3)
         {
-            // playerFish.GetComponentInChildren<MeshFilter>().mesh = level3Mesh;
+            Fish2.SetActive(true);
+            currentFish = Fish2.GetComponent<Fish>();
+            Fish1.SetActive(false);
         }
     }
     public float getExp()
     {
-        return this.playerFish.GetExp();
+        return this.currentFish.GetExp();
     }
     public float getLevel()
     {
-        return this.playerFish.GetLevel();
+        return this.currentFish.GetLevel();
     }
     public float getMaxExp()
     {
-        return this.playerFish.GetMaxExp();
+        return this.currentFish.GetMaxExp();
     }
     public float GetScore()
     {
-        return this.playerFish.GetScore();
+        return this.currentFish.GetScore();
     }
     public EndGameCamera GetEndGameCamera()
     {

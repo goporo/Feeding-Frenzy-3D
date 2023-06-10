@@ -10,39 +10,44 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private GameObject fishV1Prefab;
     [SerializeField] private GameObject fishV2Prefab;
     [SerializeField] private GameObject fishV3Prefab;
-    [SerializeField] private GameObject fishV4Prefab;
-    [SerializeField] private GameObject sharkPrefab;
+
     [SerializeField] private Player player;
     [SerializeField] private static Vector3 playerPosition;
     Fish fish;
 
     // private int numberOfFishInReSpawner = 0;
-    private const int TOTAL_FISH = 100;
+    private const int TOTAL_FISH = 200;
     [SerializeField] private GameObject[] fishSpawner;
     private void Awake()
     {
         fishSpawner = new GameObject[TOTAL_FISH];
         for (int i = 0; i < TOTAL_FISH; i++)
         {
-            fishSpawner[i] = ChooseRandomFish(UnityEngine.Random.Range(0, 5));
-            int newSize = UnityEngine.Random.Range(1, 11);
-            if (newSize <= 6)
-            {
-                newSize = 1;
-            }
-            else if (newSize < 10)
-            {
-                newSize = 3;
-            }
-            else
-            {
-                newSize = 10;
-            }
-            fish = fishSpawner[i].GetComponent<Fish>();
-            // fish.onEating+=Test;
-            fish.SetSize(newSize);
-            fish.SetLevel(newSize);
-            fish.transform.localScale = new Vector3(fish.GetSize(), fish.GetSize(), fish.GetSize());
+            int choice = (UnityEngine.Random.Range(1, TOTAL_FISH + 1));
+            if (choice <= .60 * TOTAL_FISH) choice = 0;
+            else if (choice <= .90 * TOTAL_FISH) choice = 1;
+            else if (choice <= .98 * TOTAL_FISH) choice = 2;
+            else choice = 3;
+
+            fishSpawner[i] = ChooseRandomFish(choice);
+            // int newSize = UnityEngine.Random.Range(1, 11);
+            // if (newSize <= 6)
+            // {
+            //     newSize = 1;
+            // }
+            // else if (newSize < 10)
+            // {
+            //     newSize = 3;
+            // }
+            // else
+            // {
+            //     newSize = 10;
+            // }
+            // fish = fishSpawner[i].GetComponent<Fish>();
+            // // fish.onEating+=Test;
+            // fish.SetSize(newSize);
+            // fish.SetLevel(newSize);
+            // fish.transform.localScale = new Vector3(fish.GetSize(), fish.GetSize(), fish.GetSize());
         }
     }
     private void Start()
@@ -68,11 +73,11 @@ public class FishSpawner : MonoBehaviour
         {
             newSize = 10;
         }
-        otherFish.SetSize(newSize);
-        otherFish.SetLevel(newSize);
-        otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
+        // otherFish.SetSize(newSize);
+        // otherFish.SetLevel(newSize);
+        // otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
         otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-25, 25), GetZ());
-        Debug.Log("Respawn at " + otherFish.transform.position);
+        // Debug.Log("Respawn at " + otherFish.transform.position);
         otherFish.visualObject.SetActive(true);
     }
     private static float GetX()
@@ -101,9 +106,7 @@ public class FishSpawner : MonoBehaviour
             case 0: return fishV0Prefab;
             case 1: return fishV1Prefab;
             case 2: return fishV2Prefab;
-            case 3: return fishV3Prefab;
-            case 4: return fishV4Prefab;
-            default: return sharkPrefab;
+            default: return fishV3Prefab;
         }
     }
     private void Update()

@@ -39,7 +39,11 @@ public class Fish : MonoBehaviour
     }
     public void SetIsSwimming(bool value)
     {
-        fishAnimator.SetBool("isSwimming", value);
+        try
+        {
+            fishAnimator.SetBool("isSwimming", value);
+        }
+        catch { }
     }
     public void Attack(Fish otherFish)
     {
@@ -50,20 +54,19 @@ public class Fish : MonoBehaviour
     }
     public void Eat(Fish otherFish)
     {
-        // Debug.Log("Fish ate");
-        // Debug.Log(otherFish);
-        if (this.size >= otherFish.size)
+        Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
+        if (this.size > otherFish.size)
         {
             if (otherFish.GetComponentInParent<Player>())
             {
-                Endgame(otherFish);
+                // decrease health instead
+                // Endgame(otherFish);
             }
             // Disable fish and then respawn them
             otherFish.visualObject.SetActive(false);
             FishSpawner.RespawnFish(otherFish);
             // Take exp from otherFish
-            this.exp += 1;
-            this.exp += otherFish.level;
+            this.exp += otherFish.exp;
             this.score += 10 + otherFish.level * 10;
             if (this.exp >= this.maxExp)
             {
@@ -87,7 +90,7 @@ public class Fish : MonoBehaviour
         this.exp = this.exp - this.maxExp;
         this.level += 1;
         this.maxExp = this.level * 3;
-        this.size = this.level;
+        // this.size = this.level;
         // Debug.Log("Level Up Fish");
         onLevelUp?.Invoke(this, EventArgs.Empty);
     }

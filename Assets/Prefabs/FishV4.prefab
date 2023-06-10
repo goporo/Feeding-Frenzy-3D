@@ -107,15 +107,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -159,11 +159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: level
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_Enabled
@@ -189,7 +189,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5105224423886067369, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
 --- !u!1 &2604399426268257837 stripped
 GameObject:
@@ -210,14 +211,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1
   sprintSpeed: 0
-  damage: 10
-  health: 100
-  exp: 0
+  damage: 0
+  health: 0
+  exp: 5
   level: 1
   maxExp: 2
   swimSpeed: 3
   score: 3
-  visualObject: {fileID: 0}
+  visualObject: {fileID: 2604399426268257837}
   fishSpawner: {fileID: 0}
   numWaypoints: 5
   patrolRange: 30

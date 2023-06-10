@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42c55bd30b399b248b02b375416bf598
+guid: e470541feed582a42b8744d1540ec95e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -34,10 +34,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Idle
-      takeName: metarig.001|metarig.001|metarig|metarigAction
-      internalID: -5118320271833118707
+      takeName: metarig_shark1|metarig.001|metarig.001|metarig.001|metarig|metarigAction
+      internalID: -6522148335476085614
       firstFrame: 0
-      lastFrame: 78
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,67 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig.001|metarigAction
-      takeName: metarig.001|metarigAction
-      internalID: -8451623774555390483
-      firstFrame: 0
-      lastFrame: 80
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: metarig.001|Shader NodetreeAction
-      takeName: metarig.001|Shader NodetreeAction
-      internalID: 8488717246111261839
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Swim
-      takeName: metarig.001|metarig.001|metarig|metarigAction
-      internalID: 3893232515722672698
+      takeName: metarig_shark1|metarig.001|metarig.001|metarig.001|metarig|metarigAction
+      internalID: -5028409142064776934
       firstFrame: 80
       lastFrame: 119
       wrapMode: 0

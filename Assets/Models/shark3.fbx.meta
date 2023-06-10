@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 928e9ec7a0cb57449b37635aafebbbae
+guid: 3caf015aa8bedda4aaef5e36852d5652
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: metarig_shark3|metarigAction
-      internalID: -6168229752941046625
-      firstFrame: 0
-      lastFrame: 79
+      name: Swim
+      takeName: metarig|metarigAction
+      internalID: -887982601649841707
+      firstFrame: 80
+      lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,11 +62,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Swim
-      takeName: metarig_shark3|metarigAction.001
-      internalID: -1395264829367406853
-      firstFrame: 80
-      lastFrame: 119
+      name: Idle
+      takeName: metarig|metarigAction
+      internalID: 14714776983925720
+      firstFrame: 0
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

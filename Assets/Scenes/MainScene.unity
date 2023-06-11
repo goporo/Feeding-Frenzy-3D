@@ -2759,7 +2759,7 @@ MonoBehaviour:
   fishV0Prefab: {fileID: 5793841634662415641, guid: 4bea17dac76b4fe418c71be227cab408, type: 3}
   fishV1Prefab: {fileID: 1823808866811118730, guid: e749d069507aa0644bf37fed2b8d75d6, type: 3}
   fishV2Prefab: {fileID: 1688809659794219990, guid: dbdb978acd3454a40897d132ee98ce4d, type: 3}
-  fishV3Prefab: {fileID: 1688809659794219990, guid: dbdb978acd3454a40897d132ee98ce4d, type: 3}
+  fishV3Prefab: {fileID: 1899784320282275175, guid: d8dcb0c6ccf5d504ba63286848a83487, type: 3}
   player: {fileID: 1543323349}
   fishSpawner: []
 --- !u!4 &1699855170

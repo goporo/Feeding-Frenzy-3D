@@ -39,11 +39,7 @@ public class Fish : MonoBehaviour
     }
     public void SetIsSwimming(bool value)
     {
-        try
-        {
-            fishAnimator.SetBool("isSwimming", value);
-        }
-        catch { }
+        fishAnimator?.SetBool("isSwimming", value);
     }
     public void Attack(Fish otherFish)
     {

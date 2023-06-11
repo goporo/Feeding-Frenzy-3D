@@ -25,7 +25,7 @@ public class FishSpawner : MonoBehaviour
         {
             int choice = (UnityEngine.Random.Range(1, TOTAL_FISH + 1));
             if (choice <= .60 * TOTAL_FISH) choice = 0;
-            else if (choice <= .90 * TOTAL_FISH) choice = 1;
+            else if (choice <= .85 * TOTAL_FISH) choice = 1;
             else if (choice <= .98 * TOTAL_FISH) choice = 2;
             else choice = 3;
 

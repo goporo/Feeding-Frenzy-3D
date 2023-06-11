@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899784320282275175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9723227, y: -1.200161, z: 0.84767556}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6144623053423662496}
@@ -51,8 +51,8 @@ MonoBehaviour:
   damage: 0
   health: 0
   exp: 8
-  level: 1
-  maxExp: 6
+  level: 0
+  maxExp: 0
   swimSpeed: 3
   score: 0
   visualObject: {fileID: 1899784320282275175}
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967061676582118395}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3.0943227, y: 1.166161, z: 0.08982456}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2499999, y: 2, z: 1.5000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,15 +148,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa1496f56dc9184d937095cca706fa3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa1496f56dc9184d937095cca706fa3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa1496f56dc9184d937095cca706fa3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa1496f56dc9184d937095cca706fa3, type: 3}
       propertyPath: m_LocalPosition.x

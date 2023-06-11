@@ -54,7 +54,7 @@ public class Fish : MonoBehaviour
     }
     public void Eat(Fish otherFish)
     {
-        Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
+        // Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
         if (this.size > otherFish.size)
         {
             if (otherFish.GetComponentInParent<Player>())
@@ -89,7 +89,7 @@ public class Fish : MonoBehaviour
     {
         this.exp = this.exp - this.maxExp;
         this.level += 1;
-        this.maxExp = this.level * 3;
+        this.maxExp = this.level * 2;
         // this.size = this.level;
         // Debug.Log("Level Up Fish");
         onLevelUp?.Invoke(this, EventArgs.Empty);

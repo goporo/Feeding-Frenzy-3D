@@ -34,7 +34,7 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Idle
-      takeName: metarig_shark2|metarigAction
+      takeName: metarig_shark3|metarigAction.001
       internalID: 8561359792958454244
       firstFrame: 0
       lastFrame: 79
@@ -63,7 +63,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Swim
-      takeName: metarig_shark2|metarigAction
+      takeName: metarig_shark3|metarigAction.001
       internalID: -4741155208155668711
       firstFrame: 80
       lastFrame: 119

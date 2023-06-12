@@ -67,7 +67,7 @@ public class Fish : MonoBehaviour
             if (this.exp >= this.maxExp)
             {
                 // if exp > Max exp in this level, Levelup this fish
-                LevelUp(otherFish);
+                LevelUp();
             }
         }
     }
@@ -81,7 +81,7 @@ public class Fish : MonoBehaviour
         otherFish.GetComponentInParent<Player>().GetEndGameCamera().OpenEndGameMenu();
         otherFish.GetComponentInParent<Player>().gameObject.SetActive(false);
     }
-    private void LevelUp(Fish otherFish)
+    public void LevelUp()
     {
         this.exp = this.exp - this.maxExp;
         this.level += 1;

@@ -59,7 +59,7 @@ public class FishSpawner : MonoBehaviour
     }
     public static void RespawnFish(Fish otherFish)
     {
-        return;
+        // return;
         // otherFish.visualObject=sharkPrefab;
         int newSize = UnityEngine.Random.Range(1, 11);
         if (newSize <= 6)
@@ -78,22 +78,22 @@ public class FishSpawner : MonoBehaviour
         // otherFish.SetLevel(newSize);
         // otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
         otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-25, 25), GetZ());
-        // Debug.Log("Respawn at " + otherFish.transform.position);
+        Debug.Log("Respawn at " + otherFish.transform.position);
         otherFish.visualObject.SetActive(true);
     }
     private static float GetX()
     {
-        float x = UnityEngine.Random.Range(-30, 30);
+        float x = UnityEngine.Random.Range(-200, 200);
         // Debug.Log(x);
         while (Math.Abs(x - playerPosition.x) < 20)
         {
-            x = UnityEngine.Random.Range(-30, 30);
+            x = UnityEngine.Random.Range(-200, 200);
         }
         return x;
     }
     private static float GetZ()
     {
-        float z = UnityEngine.Random.Range(-200, -200);
+        float z = UnityEngine.Random.Range(-200, 200);
         while (Math.Abs(z - playerPosition.z) < 20)
         {
             z = UnityEngine.Random.Range(-200, -200);

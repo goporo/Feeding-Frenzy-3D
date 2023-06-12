@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
-    private Fish currentFish;
+    [SerializeField] private Fish currentFish;
     [SerializeField] private GameObject Fish1;
     [SerializeField] private GameObject Fish2;
     [SerializeField] private GameObject Fish3;
@@ -62,10 +62,10 @@ public class Player : MonoBehaviour
 
         currentFish.SetIsSwimming(inputVector.magnitude > 0);
 
-        // if (Input.GetKey(KeyCode.Z))
-        // {
-        //     this.currentFish.Eat(this.currentFish);
-        // }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            this.currentFish.LevelUp();
+        }
         if (!((transform.position.y - this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight()) < 0))
         {
             transform.position -= new Vector3(0, 15 * Time.deltaTime, 0);
@@ -77,19 +77,24 @@ public class Player : MonoBehaviour
 
     private void GrowUp(object sender, EventArgs e)
     {
-        Debug.Log("Lvl cua ca: " + getLevel());
+        Debug.Log("Lvl cua ca: " + this.currentFish.GetLevel());
         if (currentFish.GetLevel() > 5)
         {
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
+            // this.currentFish.onLevelUp += GrowUp;
+            // OnGrowUpAction();
             Fish2.SetActive(false);
-        }
-        else if (currentFish.GetLevel() > 3)
+        }else if (currentFish.GetLevel() > 3)
         {
             Fish2.SetActive(true);
             currentFish = Fish2.GetComponent<Fish>();
+            OnGrowUpAction();
             Fish1.SetActive(false);
         }
+    }
+    private void OnGrowUpAction(){
+        this.currentFish.onLevelUp += GrowUp;
     }
     public float getExp()
     {

@@ -62,10 +62,10 @@ public class Player : MonoBehaviour
 
         currentFish.SetIsSwimming(inputVector.magnitude > 0);
 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            this.currentFish.LevelUp();
-        }
+        // if (Input.GetKey(KeyCode.Z))
+        // {
+        //     this.currentFish.LevelUp();
+        // }
         if (!((transform.position.y - this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight()) < 0))
         {
             transform.position -= new Vector3(0, 15 * Time.deltaTime, 0);
@@ -85,7 +85,8 @@ public class Player : MonoBehaviour
             // this.currentFish.onLevelUp += GrowUp;
             // OnGrowUpAction();
             Fish2.SetActive(false);
-        }else if (currentFish.GetLevel() > 3)
+        }
+        else if (currentFish.GetLevel() > 3)
         {
             Fish2.SetActive(true);
             currentFish = Fish2.GetComponent<Fish>();
@@ -93,7 +94,8 @@ public class Player : MonoBehaviour
             Fish1.SetActive(false);
         }
     }
-    private void OnGrowUpAction(){
+    private void OnGrowUpAction()
+    {
         this.currentFish.onLevelUp += GrowUp;
     }
     public float getExp()

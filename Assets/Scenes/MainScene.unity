@@ -1899,15 +1899,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1915,11 +1915,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96
+      value: 4.62
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3caf015aa8bedda4aaef5e36852d5652, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2724,6 +2724,7 @@ MonoBehaviour:
   sprintSpeedMultiplier: 4
   playerCamera: {fileID: 963194229}
   endGameCamera: {fileID: 1261301708}
+  currentFish: {fileID: 0}
   Fish1: {fileID: 1420326036}
   Fish2: {fileID: 1828056445}
   Fish3: {fileID: 1827346605}

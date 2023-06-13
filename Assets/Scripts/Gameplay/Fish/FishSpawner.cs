@@ -16,7 +16,8 @@ public class FishSpawner : MonoBehaviour
     Fish fish;
 
     // private int numberOfFishInReSpawner = 0;
-    private const int TOTAL_FISH = 200;
+    private const int TOTAL_FISH = 500;
+    private const int BOUNDARY = 400;
     [SerializeField] private GameObject[] fishSpawner;
     private void Awake()
     {
@@ -54,7 +55,7 @@ public class FishSpawner : MonoBehaviour
     {
         for (int i = 0; i < TOTAL_FISH; i++)
         {
-            fishSpawner[i] = Instantiate(fishSpawner[i], new Vector3(UnityEngine.Random.Range(-30, 30), UnityEngine.Random.Range(-25, 25), UnityEngine.Random.Range(-200, 200)), Quaternion.identity);
+            fishSpawner[i] = Instantiate(fishSpawner[i], new Vector3(UnityEngine.Random.Range(-BOUNDARY, BOUNDARY), UnityEngine.Random.Range(-30, 105), UnityEngine.Random.Range(-BOUNDARY, BOUNDARY)), Quaternion.identity);
         }
     }
     public static void RespawnFish(Fish otherFish)
@@ -77,26 +78,26 @@ public class FishSpawner : MonoBehaviour
         // otherFish.SetSize(newSize);
         // otherFish.SetLevel(newSize);
         // otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
-        otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-25, 25), GetZ());
+        otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-30, 105), GetZ());
         Debug.Log("Respawn at " + otherFish.transform.position);
         otherFish.visualObject.SetActive(true);
     }
     private static float GetX()
     {
-        float x = UnityEngine.Random.Range(-200, 200);
+        float x = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
         // Debug.Log(x);
         while (Math.Abs(x - playerPosition.x) < 20)
         {
-            x = UnityEngine.Random.Range(-200, 200);
+            x = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
         }
         return x;
     }
     private static float GetZ()
     {
-        float z = UnityEngine.Random.Range(-200, 200);
+        float z = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
         while (Math.Abs(z - playerPosition.z) < 20)
         {
-            z = UnityEngine.Random.Range(-200, -200);
+            z = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
         }
         return z;
     }

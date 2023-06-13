@@ -7,15 +7,16 @@ public class UnderWaterScript : MonoBehaviour
     [SerializeField] private float waterHeight;
 
     private bool isUnderwater;
-    private Color normalColor =  new Color(0.5f, 0.5f, 0.5f, 0f);
+    private Color normalColor = new Color(0.5f, 0.5f, 0.5f, 0f);
     private Color underwaterColor = new Color(0.12f, 0.3f, 0.45f, 0f);
-    private void Awake() {
+    private void Awake()
+    {
         waterHeight = waterPlane.transform.position.y;
     }
     // Use this for initialization
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -27,27 +28,29 @@ public class UnderWaterScript : MonoBehaviour
             if (isUnderwater) SetUnderwater();
             if (!isUnderwater) SetNormal();
         }
-        
-        
+
+
     }
 
     void SetNormal()
     {
         RenderSettings.fogColor = normalColor;
         RenderSettings.fogDensity = 0f;
-       
+
     }
 
     void SetUnderwater()
     {
         RenderSettings.fogColor = underwaterColor;
-        RenderSettings.fogDensity = 0.01f;
+        RenderSettings.fogDensity = 0.007f;
 
     }
-    public bool GetUnderwater(){
+    public bool GetUnderwater()
+    {
         return isUnderwater;
     }
-    public float GetWaterHeight(){
+    public float GetWaterHeight()
+    {
         return waterHeight;
     }
 }

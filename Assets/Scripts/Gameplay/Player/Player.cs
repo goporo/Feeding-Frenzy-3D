@@ -8,34 +8,29 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
-    [SerializeField] private Fish currentFish;
     [SerializeField] private GameObject Fish1;
     [SerializeField] private GameObject Fish2;
     [SerializeField] private GameObject Fish3;
+    private Fish currentFish;
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Fish1.SetActive(true);
         currentFish = Fish1.GetComponent<Fish>();
         this.currentFish.onLevelUp += GrowUp;
     }
 
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Terrain"))
+    //     {
+    //         // Prevent the player from passing through the terrain by stopping its movement.
+    //         transform.position -= collision.relativeVelocity * Time.deltaTime;
+    //     }
+    // }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // test leveling up by click
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     Fish1.SetActive(false);
-        //     Fish2.SetActive(true);
-        //     currentFish = Fish2.GetComponent<Fish>();
-        // }
-
         Vector3 inputVector = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -46,7 +41,6 @@ public class Player : MonoBehaviour
         {
             inputVector -= playerCamera.cameraDirection;
         }
-
 
         inputVector = inputVector.normalized;
 
@@ -62,17 +56,14 @@ public class Player : MonoBehaviour
 
         currentFish.SetIsSwimming(inputVector.magnitude > 0);
 
-        // if (Input.GetKey(KeyCode.Z))
-        // {
-        //     this.currentFish.LevelUp();
-        // }
-        if (!((transform.position.y - this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight()) < 0))
+        // Prevent the player from jumping out of the water surface
+        float waterHeight = this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight();
+        if (transform.position.y > waterHeight)
         {
-            transform.position -= new Vector3(0, 15 * Time.deltaTime, 0);
+            transform.position = new Vector3(transform.position.x, waterHeight, transform.position.z);
         }
+
         transform.position += inputVector * Time.deltaTime;
-
-
     }
 
     private void GrowUp(object sender, EventArgs e)
@@ -82,8 +73,6 @@ public class Player : MonoBehaviour
         {
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
-            // this.currentFish.onLevelUp += GrowUp;
-            // OnGrowUpAction();
             Fish2.SetActive(false);
         }
         else if (currentFish.GetLevel() > 3)
@@ -94,26 +83,32 @@ public class Player : MonoBehaviour
             Fish1.SetActive(false);
         }
     }
+
     private void OnGrowUpAction()
     {
         this.currentFish.onLevelUp += GrowUp;
     }
+
     public float getExp()
     {
         return this.currentFish.GetExp();
     }
+
     public float getLevel()
     {
         return this.currentFish.GetLevel();
     }
+
     public float getMaxExp()
     {
         return this.currentFish.GetMaxExp();
     }
+
     public float GetScore()
     {
         return this.currentFish.GetScore();
     }
+
     public EndGameCamera GetEndGameCamera()
     {
         return this.endGameCamera;

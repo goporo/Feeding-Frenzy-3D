@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FishBody
   - FishMouth
+  - Terrain
   layers:
   - Default
   - TransparentFX

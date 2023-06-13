@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AIFish : Fish
 {
-    [SerializeField] private int numWaypoints = 5; // Number of random waypoints to generate
-    [SerializeField] private float patrolRange = 30f; // Range within which to generate random waypoints
+    [SerializeField] private int numWaypoints = 3; // Number of random waypoints to generate
+    [SerializeField] private float patrolRange = 100f; // Range within which to generate random waypoints
     [SerializeField] private float rotationSpeed = 5f; // Speed to rotate towards the next waypoint
 
     private Transform[] waypoints; // Array of randomly generated waypoints

@@ -7,7 +7,7 @@ public class PlayerCamera : MonoBehaviour
     public Transform cameraTransform;
     public float mouseSensitivity = 2f;
     float cameraVerticalRotation = 0f;
-    public Vector3 cameraDirection = Vector3.zero;
+    [HideInInspector] public Vector3 cameraDirection = Vector3.zero;
 
     void Start()
     {

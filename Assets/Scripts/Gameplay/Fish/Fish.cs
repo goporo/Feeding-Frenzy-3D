@@ -51,7 +51,8 @@ public class Fish : MonoBehaviour
     public void Eat(Fish otherFish)
     {
         // Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
-        if (this.size > otherFish.size)
+
+        if (otherFish && this.size > otherFish.size)
         {
             if (otherFish.GetComponentInParent<Player>())
             {

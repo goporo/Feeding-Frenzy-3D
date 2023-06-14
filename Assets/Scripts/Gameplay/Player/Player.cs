@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     private void GrowUp(object sender, EventArgs e)
     {
-        Debug.Log("Lvl cua ca: " + this.currentFish.GetLevel());
+        Debug.Log("Lvl cua ca: " + currentFish.GetLevel());
         if (currentFish.GetLevel() > 5)
         {
             Fish3.SetActive(true);

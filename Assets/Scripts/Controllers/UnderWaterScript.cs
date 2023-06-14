@@ -4,7 +4,7 @@ using System.Collections;
 public class UnderWaterScript : MonoBehaviour
 {
     [SerializeField] private GameObject waterPlane;
-    [SerializeField] private float waterHeight;
+    private float waterHeight;
 
     private bool isUnderwater;
     private Color normalColor = new Color(0.5f, 0.5f, 0.5f, 0f);

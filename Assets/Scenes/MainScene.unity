@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11489712, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
+      propertyPath: m_ReflectLayers.m_Bits
+      value: 23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
 --- !u!1 &861825865
@@ -1338,7 +1342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1543323347}
   cameraTransform: {fileID: 2039479763}
-  mouseSensitivity: 200
+  mouseSensitivity: 180
   cameraDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &963194230
 MonoBehaviour:
@@ -1353,7 +1357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterPlane: {fileID: 1864131631}
-  waterHeight: 0
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0

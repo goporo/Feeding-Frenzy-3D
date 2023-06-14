@@ -129,10 +129,10 @@ MonoBehaviour:
   level: 0
   maxExp: 0
   swimSpeed: 3
-  score: 3
+  score: 0
   visualObject: {fileID: 5105224423886067382}
   fishSpawner: {fileID: 0}
-  numWaypoints: 5
+  numWaypoints: 3
   patrolRange: 30
   rotationSpeed: 5
 --- !u!1001 &1471806007697215393

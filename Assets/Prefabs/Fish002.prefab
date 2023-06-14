@@ -57,7 +57,7 @@ MonoBehaviour:
   score: 0
   visualObject: {fileID: 1823808866811118730}
   fishSpawner: {fileID: 0}
-  numWaypoints: 5
+  numWaypoints: 3
   patrolRange: 30
   rotationSpeed: 5
 --- !u!1 &4963572182160694553

@@ -79,7 +79,6 @@ public class FishSpawner : MonoBehaviour
         // otherFish.SetLevel(newSize);
         // otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
         otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-30, 105), GetZ());
-        Debug.Log("Respawn at " + otherFish.transform.position);
         otherFish.visualObject.SetActive(true);
     }
     private static float GetX()

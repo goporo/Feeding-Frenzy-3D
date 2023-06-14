@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Fish2;
     [SerializeField] private GameObject Fish3;
     private Fish currentFish;
+    private const float baseAnimationSpeed = 1.8f;
 
     private void Start()
     {
@@ -32,27 +33,28 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Vector3 inputVector = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
-            inputVector += playerCamera.cameraDirection;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            inputVector -= playerCamera.cameraDirection;
-        }
+            if (Input.GetKey(KeyCode.W))
+                inputVector += playerCamera.cameraDirection;
+            else
+                inputVector -= playerCamera.cameraDirection;
 
-        inputVector = inputVector.normalized;
-
-        // Check if the Shift key is held down to sprint
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            inputVector *= speed * sprintSpeedMultiplier;
+            // Check if the Shift key is held down to sprint
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                currentFish.SetAnimationSpeed(sprintSpeedMultiplier);
+                inputVector *= speed * sprintSpeedMultiplier;
+            }
+            else
+            {
+                currentFish.SetAnimationSpeed(baseAnimationSpeed);
+                inputVector *= speed;
+            }
         }
+        // fish idle 
         else
-        {
-            inputVector *= speed;
-        }
+            currentFish.SetAnimationSpeed(baseAnimationSpeed);
 
         currentFish.SetIsSwimming(inputVector.magnitude > 0);
 

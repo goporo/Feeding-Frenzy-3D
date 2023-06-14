@@ -15,16 +15,28 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Adjust the smoothing factor as per your preference
+    public float mouseSmoothing = 0.1f;
+
+    private Vector2 smoothMouseInput;
+
     void Update()
     {
-        float inputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float inputX = Input.GetAxis("Mouse X");
+        float inputY = Input.GetAxis("Mouse Y");
 
-        cameraVerticalRotation -= inputY;
+        // Apply smoothing to the mouse input
+        smoothMouseInput.x = Mathf.Lerp(smoothMouseInput.x, inputX, mouseSmoothing);
+        smoothMouseInput.y = Mathf.Lerp(smoothMouseInput.y, inputY, mouseSmoothing);
+
+        float smoothInputX = smoothMouseInput.x * mouseSensitivity * Time.deltaTime;
+        float smoothInputY = smoothMouseInput.y * mouseSensitivity * Time.deltaTime;
+
+        cameraVerticalRotation -= smoothInputY;
 
         transform.localRotation = Quaternion.Euler(cameraVerticalRotation, 0f, 0f);
-        player.Rotate(Vector3.up * inputX);
-        player.Rotate(Vector3.left * inputY);
+        player.Rotate(Vector3.up * smoothInputX);
+        player.Rotate(Vector3.left * smoothInputY);
 
         // Lock Z rotation
         player.localEulerAngles = new Vector3(player.localEulerAngles.x, player.localEulerAngles.y, 0f);

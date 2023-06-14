@@ -41,6 +41,10 @@ public class Fish : MonoBehaviour
     {
         fishAnimator?.SetBool("isSwimming", value);
     }
+    public void SetAnimationSpeed(float playSpeed = 1f)
+    {
+        fishAnimator.speed = playSpeed;
+    }
     public void Attack(Fish otherFish)
     {
         // otherFish.health -= this.damage;

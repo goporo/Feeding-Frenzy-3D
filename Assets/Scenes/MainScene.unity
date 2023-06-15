@@ -1943,6 +1943,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e470541feed582a42b8744d1540ec95e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1965485331860381291, guid: e470541feed582a42b8744d1540ec95e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2504,15 +2508,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
-  sprintSpeed: 0
   damage: 10
   health: 100
   exp: 0
-  level: 1
   maxExp: 3
   swimSpeed: 3
-  score: 0
-  visualObject: {fileID: 1420326036}
+  sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}
 --- !u!95 &1420326039
 Animator:
@@ -2546,7 +2547,7 @@ GameObject:
   - component: {fileID: 1543323349}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2583,7 +2584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  sprintSpeedMultiplier: 4
+  sprintSpeedMultiplier: 5
   playerCamera: {fileID: 963194229}
   endGameCamera: {fileID: 1261301708}
   Fish1: {fileID: 1420326036}
@@ -2798,15 +2799,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 6
-  sprintSpeed: 0
   damage: 10
   health: 100
   exp: 0
-  level: 1
   maxExp: 3
   swimSpeed: 3
-  score: 0
-  visualObject: {fileID: 1827346605}
+  sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}
 --- !u!95 &1827346607
 Animator:
@@ -2961,15 +2959,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
-  sprintSpeed: 0
   damage: 10
   health: 100
   exp: 0
-  level: 1
   maxExp: 3
   swimSpeed: 3
-  score: 0
-  visualObject: {fileID: 1828056445}
+  sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}
 --- !u!1 &1828056448 stripped
 GameObject:

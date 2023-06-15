@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027758773958359404}
   - component: {fileID: 8531893222398813102}
+  - component: {fileID: 2047558122}
   m_Layer: 0
   m_Name: Fish003
   m_TagString: Untagged
@@ -46,20 +47,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827546bbca81a804988ac121cf17b784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
-  sprintSpeed: 0
+  size: 3
   damage: 0
   health: 0
   exp: 6
-  level: 0
   maxExp: 0
   swimSpeed: 5
-  score: 0
-  visualObject: {fileID: 1688809659794219990}
+  sprintSpeed: 12
   fishSpawner: {fileID: 0}
-  numWaypoints: 3
-  patrolRange: 30
-  rotationSpeed: 5
+--- !u!135 &2047558122
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688809659794219990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7865780948557294455
 GameObject:
   m_ObjectHideFlags: 0

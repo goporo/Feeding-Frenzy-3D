@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823808866811118740}
   - component: {fileID: 6181508634345842716}
+  - component: {fileID: 2851673748117139632}
   m_Layer: 0
   m_Name: Fish002
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1823808866811118730}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1205412786947796649}
@@ -47,19 +48,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  sprintSpeed: 0
   damage: 0
   health: 0
   exp: 3
-  level: 0
   maxExp: 0
   swimSpeed: 4
-  score: 0
-  visualObject: {fileID: 1823808866811118730}
+  sprintSpeed: 10
   fishSpawner: {fileID: 0}
-  numWaypoints: 3
-  patrolRange: 30
-  rotationSpeed: 5
+--- !u!135 &2851673748117139632
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823808866811118730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4963572182160694553
 GameObject:
   m_ObjectHideFlags: 0

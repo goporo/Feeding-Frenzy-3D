@@ -2,23 +2,50 @@ using UnityEngine;
 
 public class AIFish : Fish
 {
-    [SerializeField] private int numWaypoints = 3; // Number of random waypoints to generate
-    [SerializeField] private float patrolRange = 100f; // Range within which to generate random waypoints
-    [SerializeField] private float rotationSpeed = 5f; // Speed to rotate towards the next waypoint
-
+    private float patrolRange = 100f; // Range within which to generate random waypoints
+    private float rotationSpeed = 5f; // Speed to rotate towards the next waypoint
+    private int numWaypoints = 4; // Number of random waypoints to generate
+    private float fleeDuration = 2f; // Duration for which the fish will flee
     private Vector3[] waypoints; // Array of randomly generated waypoint positions
     private int currentWaypointIndex; // Index of the current waypoint
+    private bool isFleeing; // Flag indicating if the fish is currently fleeing
+    private float currentSwimSpeed; // The normal swim speed
+    private float fleeTimer; // Timer for tracking the duration of fleeing
+
 
     private void Start()
     {
         GenerateRandomWaypoints();
         currentWaypointIndex = 0;
+        isFleeing = false;
+        currentSwimSpeed = swimSpeed;
+        fleeTimer = 0f;
     }
 
     private void Update()
     {
-        RotateTowardsWaypoint();
-        SwimTowardsWaypoint();
+        if (!isFleeing)
+        {
+            RotateTowardsWaypoint();
+            SwimTowardsWaypoint();
+        }
+        else
+        {
+            FleeFromPlayer();
+            UpdateFleeTimer();
+        }
+    }
+    private void UpdateFleeTimer()
+    {
+        fleeTimer += Time.deltaTime;
+
+        if (fleeTimer >= fleeDuration)
+        {
+            fleeTimer = 0f;
+            isFleeing = false;
+            currentSwimSpeed = swimSpeed;
+            currentWaypointIndex = GetRandomWaypointIndex();
+        }
     }
 
     private void GenerateRandomWaypoints()
@@ -65,12 +92,56 @@ public class AIFish : Fish
         if (direction != Vector3.zero)
         {
             direction.Normalize();
-            transform.position += direction * swimSpeed * Time.deltaTime;
+            transform.position += direction * currentSwimSpeed * Time.deltaTime;
         }
 
         if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) < 1f)
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
+    }
+
+    private void FleeFromPlayer()
+    {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        Vector3 fleeDirection = transform.position - playerObject.transform.position;
+        fleeDirection.y = 0f; // Ignore vertical component
+
+        if (fleeDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(fleeDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        transform.position += transform.forward * currentSwimSpeed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (
+            !isFleeing
+            && other.CompareTag("FishMouth")
+            && this.GetSize() < other.GetComponentInParent<Fish>().GetSize()
+        )
+        {
+            isFleeing = true;
+            currentSwimSpeed = sprintSpeed;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+    }
+    private int GetRandomWaypointIndex()
+    {
+        int randomIndex = currentWaypointIndex;
+
+        while (randomIndex == currentWaypointIndex)
+        {
+            randomIndex = Random.Range(0, waypoints.Length);
+        }
+        return randomIndex;
     }
 }

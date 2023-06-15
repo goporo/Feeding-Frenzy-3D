@@ -53,7 +53,7 @@ MonoBehaviour:
   exp: 3
   level: 0
   maxExp: 0
-  swimSpeed: 3
+  swimSpeed: 4
   score: 0
   visualObject: {fileID: 1823808866811118730}
   fishSpawner: {fileID: 0}

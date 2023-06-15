@@ -10,7 +10,9 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private Player player;
 
     private const int TOTAL_FISH = 500;
-    private const int BOUNDARY = 450;
+    private const int XZ_BOUNDARY = 450;
+    private const int Y_BOUNDARY = 70;
+
     private const int MAX_ACTIVE_FISH = 500;
 
     private List<Fish> fishPool;
@@ -60,16 +62,15 @@ public class FishSpawner : MonoBehaviour
         while (true)
         {
             position = new Vector3(
-                UnityEngine.Random.Range(-BOUNDARY, BOUNDARY),
-                UnityEngine.Random.Range(-70, 70),
-                UnityEngine.Random.Range(-BOUNDARY, BOUNDARY)
+                UnityEngine.Random.Range(-XZ_BOUNDARY, XZ_BOUNDARY),
+                UnityEngine.Random.Range(-Y_BOUNDARY, Y_BOUNDARY),
+                UnityEngine.Random.Range(-XZ_BOUNDARY, XZ_BOUNDARY)
             );
 
             // Sample the terrain height at the position
             float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
-
             // Ensure the fish is spawned above the terrain
-            if (position.y > terrainHeight)
+            if (position.y > terrainHeight + Terrain.activeTerrain.transform.position.y)
             {
                 // Calculate squared distance between position and player position
                 float distanceSquared = (position - player.transform.position).sqrMagnitude;

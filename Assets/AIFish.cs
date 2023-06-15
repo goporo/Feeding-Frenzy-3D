@@ -27,9 +27,23 @@ public class AIFish : Fish
 
         for (int i = 0; i < numWaypoints; i++)
         {
-            Vector3 randomDirection = Random.insideUnitSphere * patrolRange;
-            Vector3 randomPosition = transform.position + randomDirection;
-            waypoints[i] = randomPosition;
+            Vector3 randomDirection;
+            float terrainHeight;
+
+            do
+            {
+                randomDirection = Random.insideUnitSphere * patrolRange;
+                randomDirection.y = 0f; // Set the Y-coordinate to zero
+
+                float yVariation = Random.Range(-5f, 5f); // Random Y-coordinate variation within +-5 units
+                randomDirection.y += yVariation;
+
+                Vector3 randomPosition = transform.position + randomDirection;
+                terrainHeight = Terrain.activeTerrain.SampleHeight(randomPosition) + Terrain.activeTerrain.transform.position.y;
+            }
+            while (randomDirection.y + this.transform.position.y < terrainHeight);
+
+            waypoints[i] = transform.position + randomDirection;
         }
     }
 

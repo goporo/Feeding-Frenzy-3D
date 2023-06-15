@@ -28,6 +28,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: swimSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: numWaypoints
       value: 3
       objectReference: {fileID: 0}

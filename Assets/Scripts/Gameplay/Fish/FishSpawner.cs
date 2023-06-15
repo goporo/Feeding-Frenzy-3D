@@ -1,8 +1,5 @@
-// using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 public class FishSpawner : MonoBehaviour
 {
@@ -10,108 +7,121 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private GameObject fishV1Prefab;
     [SerializeField] private GameObject fishV2Prefab;
     [SerializeField] private GameObject fishV3Prefab;
-
     [SerializeField] private Player player;
-    [SerializeField] private static Vector3 playerPosition;
-    Fish fish;
 
-    // private int numberOfFishInReSpawner = 0;
     private const int TOTAL_FISH = 500;
-    private const int BOUNDARY = 400;
-    [SerializeField] private GameObject[] fishSpawner;
+    private const int BOUNDARY = 450;
+    private const int MAX_ACTIVE_FISH = 500;
+
+    private List<Fish> fishPool;
+    private List<Fish> activeFish;
+
     private void Awake()
     {
-        fishSpawner = new GameObject[TOTAL_FISH];
+        fishPool = new List<Fish>();
+        activeFish = new List<Fish>();
+
         for (int i = 0; i < TOTAL_FISH; i++)
         {
-            int choice = (UnityEngine.Random.Range(1, TOTAL_FISH + 1));
-            if (choice <= .60 * TOTAL_FISH) choice = 0;
-            else if (choice <= .85 * TOTAL_FISH) choice = 1;
-            else if (choice <= .98 * TOTAL_FISH) choice = 2;
-            else choice = 3;
-
-            fishSpawner[i] = ChooseRandomFish(choice);
-            // int newSize = UnityEngine.Random.Range(1, 11);
-            // if (newSize <= 6)
-            // {
-            //     newSize = 1;
-            // }
-            // else if (newSize < 10)
-            // {
-            //     newSize = 3;
-            // }
-            // else
-            // {
-            //     newSize = 10;
-            // }
-            // fish = fishSpawner[i].GetComponent<Fish>();
-            // // fish.onEating+=Test;
-            // fish.SetSize(newSize);
-            // fish.SetLevel(newSize);
-            // fish.transform.localScale = new Vector3(fish.GetSize(), fish.GetSize(), fish.GetSize());
+            GameObject fishPrefab = ChooseRandomFish();
+            Fish fish = InstantiateFish(fishPrefab);
+            fish.gameObject.SetActive(false);
+            fishPool.Add(fish);
         }
     }
+
     private void Start()
     {
-        for (int i = 0; i < TOTAL_FISH; i++)
+        for (int i = 0; i < MAX_ACTIVE_FISH; i++)
         {
-            fishSpawner[i] = Instantiate(fishSpawner[i], new Vector3(UnityEngine.Random.Range(-BOUNDARY, BOUNDARY), UnityEngine.Random.Range(-30, 105), UnityEngine.Random.Range(-BOUNDARY, BOUNDARY)), Quaternion.identity);
+            ActivateFish();
         }
     }
-    public static void RespawnFish(Fish otherFish)
+
+    private void ActivateFish()
     {
-        // return;
-        // otherFish.visualObject=sharkPrefab;
-        int newSize = UnityEngine.Random.Range(1, 11);
-        if (newSize <= 6)
+        if (activeFish.Count >= MAX_ACTIVE_FISH)
+            return;
+
+        Fish fish = GetInactiveFishFromPool();
+        if (fish != null)
         {
-            newSize = 1;
+            fish.transform.position = GetRandomFishPosition();
+            fish.gameObject.SetActive(true);
+            activeFish.Add(fish);
         }
-        else if (newSize < 10)
+    }
+
+    private Vector3 GetRandomFishPosition()
+    {
+        Vector3 position;
+        float minDistanceSquared = 20f * 20f; // Minimum squared distance to player
+
+        while (true)
         {
-            newSize = 3;
+            position = new Vector3(
+                UnityEngine.Random.Range(-BOUNDARY, BOUNDARY),
+                UnityEngine.Random.Range(-70, 70),
+                UnityEngine.Random.Range(-BOUNDARY, BOUNDARY)
+            );
+
+            // Sample the terrain height at the position
+            float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
+
+            // Ensure the fish is spawned above the terrain
+            if (position.y > terrainHeight)
+            {
+                // Calculate squared distance between position and player position
+                float distanceSquared = (position - player.transform.position).sqrMagnitude;
+
+                if (distanceSquared >= minDistanceSquared)
+                {
+                    // Valid position found, break the loop
+                    break;
+                }
+            }
         }
+
+        return position;
+    }
+
+
+    private Fish GetInactiveFishFromPool()
+    {
+        foreach (Fish fish in fishPool)
+        {
+            if (!fish.gameObject.activeSelf)
+            {
+                return fish;
+            }
+        }
+        return null;
+    }
+
+    private GameObject ChooseRandomFish()
+    {
+        float choice = UnityEngine.Random.value;
+        if (choice <= 0.6f)
+            return fishV0Prefab;
+        else if (choice <= 0.85f)
+            return fishV1Prefab;
+        else if (choice <= 0.98f)
+            return fishV2Prefab;
         else
-        {
-            newSize = 10;
-        }
-        // otherFish.SetSize(newSize);
-        // otherFish.SetLevel(newSize);
-        // otherFish.transform.localScale = new Vector3(otherFish.GetSize(), otherFish.GetSize(), otherFish.GetSize());
-        otherFish.transform.position = new Vector3(GetX(), UnityEngine.Random.Range(-30, 105), GetZ());
-        otherFish.visualObject.SetActive(true);
+            return fishV3Prefab;
     }
-    private static float GetX()
+
+    private Fish InstantiateFish(GameObject fishPrefab)
     {
-        float x = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
-        // Debug.Log(x);
-        while (Math.Abs(x - playerPosition.x) < 20)
-        {
-            x = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
-        }
-        return x;
+        GameObject fishObject = Instantiate(fishPrefab, transform);
+        Fish fish = fishObject.GetComponent<Fish>();
+        return fish;
     }
-    private static float GetZ()
+
+    public void DeactivateFish(Fish fish)
     {
-        float z = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
-        while (Math.Abs(z - playerPosition.z) < 20)
-        {
-            z = UnityEngine.Random.Range(-BOUNDARY, BOUNDARY);
-        }
-        return z;
-    }
-    private GameObject ChooseRandomFish(int index)
-    {
-        switch (index)
-        {
-            case 0: return fishV0Prefab;
-            case 1: return fishV1Prefab;
-            case 2: return fishV2Prefab;
-            default: return fishV3Prefab;
-        }
-    }
-    private void Update()
-    {
-        playerPosition = player.transform.position;
+        fish.gameObject.SetActive(false);
+        activeFish.Remove(fish);
+        ActivateFish();
     }
 }

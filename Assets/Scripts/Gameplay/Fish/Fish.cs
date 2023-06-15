@@ -13,10 +13,10 @@ public class Fish : MonoBehaviour
     [SerializeField] private float exp = 0;
     [SerializeField] private int level = 1;
     [SerializeField] private float maxExp = 3;
-    [SerializeField] public float swimSpeed = 3f; // Speed at which the fish swims
+    [SerializeField] public float swimSpeed = 3f;
     [SerializeField] private float score = 0;
-    [SerializeField] public GameObject visualObject; // Object that hold the fish
-    [SerializeField] public FishSpawner fishSpawner; // Object that hold the fish
+    [SerializeField] public GameObject visualObject;
+    [SerializeField] public FishSpawner fishSpawner;
     private Animator fishAnimator;
 
     public event EventHandler onLevelUp;
@@ -63,9 +63,10 @@ public class Fish : MonoBehaviour
                 // decrease health instead
                 // Endgame(otherFish);
             }
+
             // Disable fish and then respawn them
-            otherFish.visualObject.SetActive(false);
-            FishSpawner.RespawnFish(otherFish);
+            fishSpawner.DeactivateFish(otherFish);
+
             // Take exp from otherFish
             this.exp += otherFish.exp;
             this.score += 10 + otherFish.level * 10;

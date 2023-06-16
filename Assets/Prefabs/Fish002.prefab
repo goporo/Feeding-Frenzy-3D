@@ -55,6 +55,7 @@ MonoBehaviour:
   swimSpeed: 4
   sprintSpeed: 10
   fishSpawner: {fileID: 0}
+  bloodSplatterEffect: {fileID: 4407019772591274003, guid: 9107b85be187b0d49ad730c2e5d1cd5f, type: 3}
 --- !u!135 &2851673748117139632
 SphereCollider:
   m_ObjectHideFlags: 0

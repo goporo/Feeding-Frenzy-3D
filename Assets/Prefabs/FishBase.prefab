@@ -122,19 +122,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  sprintSpeed: 0
   damage: 0
   health: 0
   exp: 3
-  level: 0
   maxExp: 0
   swimSpeed: 3
-  score: 0
-  visualObject: {fileID: 5105224423886067382}
+  sprintSpeed: 0
   fishSpawner: {fileID: 0}
-  numWaypoints: 3
-  patrolRange: 30
-  rotationSpeed: 5
+  bloodSplatterEffect: {fileID: 4407019772591274003, guid: 9107b85be187b0d49ad730c2e5d1cd5f, type: 3}
 --- !u!1001 &1471806007697215393
 PrefabInstance:
   m_ObjectHideFlags: 0

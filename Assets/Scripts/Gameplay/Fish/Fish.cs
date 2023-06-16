@@ -11,6 +11,8 @@ public class Fish : MonoBehaviour
     [SerializeField] protected float swimSpeed = 3f;
     [SerializeField] protected float sprintSpeed = 20f;
     [SerializeField] private FishSpawner fishSpawner;
+    public ParticleSystem bloodSplatterEffect;
+
     private int level = 1;
     private float score = 0;
     private Animator fishAnimator;
@@ -51,6 +53,7 @@ public class Fish : MonoBehaviour
             if (otherFish && this.size > otherFish.size)
             // Player attack other fish
             {
+                Instantiate(bloodSplatterEffect, this.transform.position, Quaternion.identity);
                 // Disable fish and then respawn them
                 fishSpawner.DeactivateFish(otherFish);
 
@@ -72,6 +75,7 @@ public class Fish : MonoBehaviour
                 // decrease health instead
                 // Endgame(this);
             }
+
         }
     }
     public void TakePresent()

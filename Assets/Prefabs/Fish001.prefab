@@ -24,6 +24,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
+      propertyPath: exp
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: score
       value: 0
       objectReference: {fileID: 0}
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: sprintSpeed
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 747385653820209696, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: numWaypoints
@@ -45,15 +49,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.75
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5105224423886067368, guid: d649050ce5bcd274cb8ae88358b52a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,5 +121,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}

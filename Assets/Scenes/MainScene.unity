@@ -916,7 +916,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 5.68e-43, y: 1.84e-43, z: 0, w: -127.43829}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2508,7 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
-  damage: 10
+  damage: 0
   health: 100
   exp: 0
   maxExp: 3
@@ -2583,8 +2583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d48d19e9898da5428cbb45fe7d561b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 32
   sprintSpeedMultiplier: 5
+  stamina: 10
   playerCamera: {fileID: 963194229}
   endGameCamera: {fileID: 1261301708}
   Fish1: {fileID: 1420326036}
@@ -2799,7 +2800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 6
-  damage: 10
+  damage: 0
   health: 100
   exp: 0
   maxExp: 3
@@ -2959,7 +2960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
-  damage: 10
+  damage: 0
   health: 100
   exp: 0
   maxExp: 3

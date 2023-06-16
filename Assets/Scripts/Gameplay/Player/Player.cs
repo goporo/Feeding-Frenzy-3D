@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
+    [SerializeField] private float stamina = 10f; // Stamina for sprinting
+
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
     [SerializeField] private GameObject Fish1;

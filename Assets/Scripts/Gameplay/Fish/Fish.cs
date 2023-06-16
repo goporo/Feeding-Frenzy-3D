@@ -4,10 +4,10 @@ using System;
 public class Fish : MonoBehaviour
 {
     [SerializeField] private int size = 1;
-    [SerializeField] private float damage = 10;
-    [SerializeField] private float health = 100;
+    [SerializeField] private float damage = 0;
+    [SerializeField] private float health = 0;
     [SerializeField] private float exp = 0;
-    [SerializeField] private float maxExp = 3;
+    [SerializeField] private float maxExp = 0;
     [SerializeField] protected float swimSpeed = 3f;
     [SerializeField] protected float sprintSpeed = 20f;
     [SerializeField] private FishSpawner fishSpawner;
@@ -45,11 +45,11 @@ public class Fish : MonoBehaviour
     public void Eat(Fish otherFish)
     {
         // Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
+        if (this.GetComponentInParent<Player>())
 
-        if (otherFish && this.size > otherFish.size)
         {
+            if (otherFish && this.size > otherFish.size)
             // Player attack other fish
-            if (this.GetComponentInParent<Player>())
             {
                 // Disable fish and then respawn them
                 fishSpawner.DeactivateFish(otherFish);
@@ -67,6 +67,8 @@ public class Fish : MonoBehaviour
             // Player get attacked by other fish
             else
             {
+                // need some delay
+                Debug.Log("Player get attacked -" + otherFish.damage + "HP");
                 // decrease health instead
                 // Endgame(this);
             }

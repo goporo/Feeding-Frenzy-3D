@@ -50,7 +50,7 @@ MonoBehaviour:
   size: 1
   damage: 0
   health: 0
-  exp: 3
+  exp: 2
   maxExp: 0
   swimSpeed: 4
   sprintSpeed: 10

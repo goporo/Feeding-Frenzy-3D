@@ -24,11 +24,6 @@ public class Fish : MonoBehaviour
         fishAnimator = GetComponent<Animator>();
     }
 
-
-    void Update()
-    {
-
-    }
     public void SetIsSwimming(bool value)
     {
         fishAnimator?.SetBool("isSwimming", value);
@@ -71,8 +66,9 @@ public class Fish : MonoBehaviour
             else
             {
                 // need some delay
-                Debug.Log("Player get attacked -" + otherFish.damage + "HP");
-                // decrease health instead
+                this.health -= otherFish.damage;
+                Debug.Log("Player get attacked " + this.health + "HP");
+
                 // Endgame(this);
             }
 

@@ -9,6 +9,7 @@ public class AIFish : Fish
     private Vector3[] waypoints; // Array of randomly generated waypoint positions
     private int currentWaypointIndex; // Index of the current waypoint
     private bool isFleeing; // Flag indicating if the fish is currently fleeing
+    private bool isChasing;
     private float currentSwimSpeed; // The normal swim speed
     private float fleeTimer; // Timer for tracking the duration of fleeing
 
@@ -24,15 +25,19 @@ public class AIFish : Fish
 
     private void Update()
     {
-        if (!isFleeing)
+        if (!isFleeing && !isChasing)
         {
             RotateTowardsWaypoint();
             SwimTowardsWaypoint();
         }
-        else
+        else if (isFleeing)
         {
             FleeFromPlayer();
             UpdateFleeTimer();
+        }
+        else if (isChasing)
+        {
+            ChasePlayer();
         }
     }
     private void UpdateFleeTimer()
@@ -116,22 +121,58 @@ public class AIFish : Fish
 
         transform.position += transform.forward * currentSwimSpeed * Time.deltaTime;
     }
+    private void ChasePlayer()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject != null)
+        {
+            Vector3 direction = playerObject.transform.position - transform.position;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+
+                direction.Normalize();
+                transform.position += direction * currentSwimSpeed * Time.deltaTime;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Skip interactions between AI fishes
+        if (!other.transform.parent.CompareTag("Player")) return;
+
+        // if player fish size bigger, other fish flee 
         if (
             !isFleeing
-            && other.CompareTag("FishMouth")
             && this.GetSize() < other.GetComponentInParent<Fish>().GetSize()
         )
         {
             isFleeing = true;
             currentSwimSpeed = sprintSpeed;
         }
+
+        // if player fish size smaller, other fish chase player
+        if (
+           this.GetSize() > other.GetComponentInParent<Fish>().GetSize()
+       )
+        {
+            isChasing = true;
+            currentSwimSpeed = sprintSpeed;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (isChasing)
+        {
+            isChasing = false;
+            currentSwimSpeed = swimSpeed;
+        }
 
     }
     private int GetRandomWaypointIndex()

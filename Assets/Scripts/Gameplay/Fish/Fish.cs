@@ -11,7 +11,8 @@ public class Fish : MonoBehaviour
     [SerializeField] protected float swimSpeed = 3f;
     [SerializeField] protected float sprintSpeed = 20f;
     [SerializeField] private FishSpawner fishSpawner;
-    public ParticleSystem bloodSplatterEffect;
+    [SerializeField] private ParticleSystem bloodSplatterEffect;
+
 
     private int level = 1;
     private float score = 0;
@@ -32,13 +33,7 @@ public class Fish : MonoBehaviour
     {
         fishAnimator.speed = playSpeed;
     }
-    public void Attack(Fish otherFish)
-    {
-        // otherFish.health -= this.damage;
-        // if(otherFish.health <= 0){
-        //     this.Eat(otherFish);
-        // }
-    }
+
     public void Eat(Fish otherFish)
     {
         // Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);

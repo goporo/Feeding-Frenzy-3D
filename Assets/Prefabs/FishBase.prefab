@@ -123,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2206852426022253465, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_Name
-      value: FishV3
+      value: fishBase
       objectReference: {fileID: 0}
     - target: {fileID: 2206852426022253465, guid: ebcc2ee2400473146b9f9b0da3169f40, type: 3}
       propertyPath: m_TagString

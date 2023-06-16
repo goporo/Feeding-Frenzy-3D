@@ -36,38 +36,35 @@ public class Fish : MonoBehaviour
 
     public void Eat(Fish otherFish)
     {
-        // Debug.Log("Fish ate" + otherFish.name + " EXP got: " + otherFish.exp);
-        if (this.GetComponentInParent<Player>())
+        if (!this.GetComponentInParent<Player>()) return;
 
+        if (this.size > otherFish.size)
+        // Player attack other fish
         {
-            if (otherFish && this.size > otherFish.size)
-            // Player attack other fish
+            Instantiate(bloodSplatterEffect, this.transform.position, Quaternion.identity);
+            // Disable fish and then respawn them
+            fishSpawner.DeactivateFish(otherFish);
+
+            // Take exp from otherFish
+            this.exp += otherFish.exp;
+            this.score += 10 + otherFish.level * 10;
+            if (this.exp >= this.maxExp)
             {
-                Instantiate(bloodSplatterEffect, this.transform.position, Quaternion.identity);
-                // Disable fish and then respawn them
-                fishSpawner.DeactivateFish(otherFish);
-
-                // Take exp from otherFish
-                this.exp += otherFish.exp;
-                this.score += 10 + otherFish.level * 10;
-                if (this.exp >= this.maxExp)
-                {
-                    // if exp > Max exp in this level, Levelup this fish
-                    LevelUp();
-                }
+                // if exp > Max exp in this level, Levelup this fish
+                LevelUp();
             }
-
-            // Player get attacked by other fish
-            else
-            {
-                // need some delay
-                this.health -= otherFish.damage;
-                Debug.Log("Player get attacked " + this.health + "HP");
-
-                // Endgame(this);
-            }
-
         }
+
+        // Player get attacked by other fish
+        else
+        {
+            // need some delay
+            this.health -= otherFish.damage;
+            Debug.Log("Player get attacked " + this.health + "HP");
+
+            // Endgame(this);
+        }
+
     }
     public void TakePresent()
     {

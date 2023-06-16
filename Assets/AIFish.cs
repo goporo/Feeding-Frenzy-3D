@@ -143,25 +143,21 @@ public class AIFish : Fish
     private void OnTriggerEnter(Collider other)
     {
         // Skip interactions between AI fishes
-        if (!other.transform.parent.CompareTag("Player")) return;
-
-        // if player fish size bigger, other fish flee 
-        if (
-            !isFleeing
-            && this.GetSize() < other.GetComponentInParent<Fish>().GetSize()
-        )
+        if (other.transform.parent && other.transform.parent.CompareTag("Player"))
         {
-            isFleeing = true;
-            currentSwimSpeed = sprintSpeed;
-        }
+            // if player fish size bigger, other fish flee 
+            if (!isFleeing && this.GetSize() < other.GetComponentInParent<Fish>().GetSize())
+            {
+                isFleeing = true;
+                currentSwimSpeed = sprintSpeed;
+            }
 
-        // if player fish size smaller, other fish chase player
-        if (
-           this.GetSize() > other.GetComponentInParent<Fish>().GetSize()
-       )
-        {
-            isChasing = true;
-            currentSwimSpeed = sprintSpeed;
+            // if player fish size smaller, other fish chase player
+            if (this.GetSize() > other.GetComponentInParent<Fish>().GetSize())
+            {
+                isChasing = true;
+                currentSwimSpeed = sprintSpeed;
+            }
         }
 
     }

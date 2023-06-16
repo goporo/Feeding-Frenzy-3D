@@ -16,21 +16,15 @@ public class Player : MonoBehaviour
     private Fish currentFish;
     private const float baseAnimationSpeed = 1.8f;
 
+    private CharacterController characterController; // Reference to the CharacterController component
+
     private void Start()
     {
+        characterController = GetComponent<CharacterController>();
         Fish1.SetActive(true);
         currentFish = Fish1.GetComponent<Fish>();
         this.currentFish.onLevelUp += GrowUp;
     }
-
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Terrain"))
-    //     {
-    //         // Prevent the player from passing through the terrain by stopping its movement.
-    //         transform.position -= collision.relativeVelocity * Time.deltaTime;
-    //     }
-    // }
 
     private void Update()
     {
@@ -64,10 +58,12 @@ public class Player : MonoBehaviour
         float waterHeight = this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight();
         if (transform.position.y > waterHeight)
         {
-            transform.position = new Vector3(transform.position.x, waterHeight, transform.position.z);
+            Vector3 newPosition = new Vector3(transform.position.x, waterHeight, transform.position.z);
+            characterController.Move(newPosition - transform.position);
         }
 
-        transform.position += inputVector * Time.deltaTime;
+        // Apply player movement using the CharacterController
+        characterController.Move(inputVector * Time.deltaTime);
     }
 
     private void GrowUp(object sender, EventArgs e)

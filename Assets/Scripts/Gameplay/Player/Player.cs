@@ -17,10 +17,13 @@ public class Player : MonoBehaviour
     private const float baseAnimationSpeed = 1.8f;
 
     private CharacterController characterController; // Reference to the CharacterController component
+    private UnderWaterScript underWaterScript; // Reference to the UnderWaterScript component
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        underWaterScript = this.GetComponentInChildren<UnderWaterScript>();
+
         Fish1.SetActive(true);
         currentFish = Fish1.GetComponent<Fish>();
         this.currentFish.onLevelUp += GrowUp;
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Vector3 inputVector = Vector3.zero;
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
             if (Input.GetKey(KeyCode.W))
@@ -36,35 +40,48 @@ public class Player : MonoBehaviour
             else
                 inputVector -= playerCamera.cameraDirection;
 
-            // Check if the Shift key is held down to sprint
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                currentFish.SetAnimationSpeed(sprintSpeedMultiplier);
-                inputVector *= speed * sprintSpeedMultiplier;
-            }
-            else
-            {
-                currentFish.SetAnimationSpeed(baseAnimationSpeed);
-                inputVector *= speed;
-            }
+            float animationSpeedMultiplier = Input.GetKey(KeyCode.LeftShift) ? sprintSpeedMultiplier : baseAnimationSpeed;
+            currentFish.SetAnimationSpeed(animationSpeedMultiplier);
+
+            inputVector *= speed * animationSpeedMultiplier;
         }
-        // fish idle 
         else
+        {
             currentFish.SetAnimationSpeed(baseAnimationSpeed);
+        }
 
         currentFish.SetIsSwimming(inputVector.magnitude > 0);
 
+        keepPlayerInPool();
+
+        Vector3 movement = inputVector * Time.deltaTime;
+        characterController.Move(movement);
+    }
+
+    private void keepPlayerInPool()
+    {
+        float waterHeight = this.underWaterScript.GetWaterHeight();
+        float waterInnerRadius = 0.5f * this.underWaterScript.GetWaterInnerRadius();
+        Vector3 waterCenter = this.underWaterScript.GetWaterCenterPoint();
+        Vector3 playerPosition = transform.position;
+
         // Prevent the player from jumping out of the water surface
-        float waterHeight = this.GetComponentInChildren<UnderWaterScript>().GetWaterHeight();
-        if (transform.position.y > waterHeight)
+        if (playerPosition.y > waterHeight)
         {
-            Vector3 newPosition = new Vector3(transform.position.x, waterHeight, transform.position.z);
-            characterController.Move(newPosition - transform.position);
+            playerPosition.y = waterHeight;
         }
 
-        // Apply player movement using the CharacterController
-        characterController.Move(inputVector * Time.deltaTime);
+        // Prevent the player from going outside the inner radius
+        float distanceFromCenter = Vector3.Distance(playerPosition, waterCenter);
+        if (distanceFromCenter > waterInnerRadius)
+        {
+            Vector3 directionFromCenter = (playerPosition - waterCenter).normalized;
+            playerPosition = waterCenter + directionFromCenter * waterInnerRadius;
+        }
+
+        characterController.Move(playerPosition - transform.position);
     }
+
 
     private void GrowUp(object sender, EventArgs e)
     {

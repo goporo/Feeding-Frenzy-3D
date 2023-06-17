@@ -2517,9 +2517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 2
   damage: 0
-  health: 100
   exp: 0
-  maxExp: 3
   swimSpeed: 3
   sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}
@@ -2593,16 +2591,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d48d19e9898da5428cbb45fe7d561b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxExp: 3
   speed: 28
   sprintSpeedMultiplier: 4
-  stamina: 10
+  maxStamina: 10
   staminaReduceRate: 10
   staminaRecoveryRate: 2
+  healthReduceRate: 2
   playerCamera: {fileID: 963194229}
   endGameCamera: {fileID: 1261301708}
   Fish1: {fileID: 1420326036}
   Fish2: {fileID: 1828056445}
   Fish3: {fileID: 1827346605}
+  exp: 0
 --- !u!143 &1543323352
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2831,9 +2833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 6
   damage: 0
-  health: 100
   exp: 0
-  maxExp: 3
   swimSpeed: 3
   sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}
@@ -2996,9 +2996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 4
   damage: 0
-  health: 100
   exp: 0
-  maxExp: 3
   swimSpeed: 3
   sprintSpeed: 0
   fishSpawner: {fileID: 1699855169}

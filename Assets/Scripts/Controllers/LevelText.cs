@@ -7,7 +7,8 @@ public class LevelText : MonoBehaviour
 {
     [SerializeField] Text levelText;
     [SerializeField] Player player;
-    private void Update() {
-        levelText.text = player.getLevel()+"";
+    private void Update()
+    {
+        levelText.text = player.GetLevel() + "";
     }
 }

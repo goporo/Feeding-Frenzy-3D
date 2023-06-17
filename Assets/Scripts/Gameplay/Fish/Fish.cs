@@ -5,20 +5,16 @@ public class Fish : MonoBehaviour
 {
     [SerializeField] private int size = 1;
     [SerializeField] private float damage = 0;
-    [SerializeField] private float health = 0;
     [SerializeField] private float exp = 0;
-    [SerializeField] private float maxExp = 0;
     [SerializeField] protected float swimSpeed = 3f;
     [SerializeField] protected float sprintSpeed = 20f;
     [SerializeField] private FishSpawner fishSpawner;
     [SerializeField] private ParticleSystem bloodSplatterEffect;
 
 
-    private int level = 1;
     private float score = 0;
     private Animator fishAnimator;
 
-    public event EventHandler onLevelUp;
 
     void Start()
     {
@@ -38,6 +34,8 @@ public class Fish : MonoBehaviour
     {
         if (!this.GetComponentInParent<Player>()) return;
 
+        Player player = this.GetComponentInParent<Player>();
+
         if (this.size > otherFish.size)
         // Player attack other fish
         {
@@ -46,12 +44,16 @@ public class Fish : MonoBehaviour
             fishSpawner.DeactivateFish(otherFish);
 
             // Take exp from otherFish
-            this.exp += otherFish.exp;
-            this.score += 10 + otherFish.level * 10;
-            if (this.exp >= this.maxExp)
+            player.exp += otherFish.exp;
+            // Take health from other fish
+            player.setHealth(otherFish.exp * 4);
+
+            this.score += 10 + otherFish.size * 10;
+            if (player.exp >= player.maxExp)
+
             {
                 // if exp > Max exp in this level, Levelup this fish
-                LevelUp();
+                player.LevelUp();
             }
         }
 
@@ -59,8 +61,8 @@ public class Fish : MonoBehaviour
         else
         {
             // need some delay
-            this.health -= otherFish.damage;
-            Debug.Log("Player get attacked " + this.health + "HP");
+            player.setHealth(-otherFish.damage);
+            Debug.Log("Player get attacked " + player.getCurrentHealth() + "HP");
 
             // Endgame(this);
         }
@@ -78,10 +80,12 @@ public class Fish : MonoBehaviour
     }
     public void LevelUp()
     {
-        this.exp = this.exp - this.maxExp;
-        this.level += 1;
-        this.maxExp = this.level * 2;
-        onLevelUp?.Invoke(this, EventArgs.Empty);
+        // obsolete
+        return;
+        // this.exp = this.exp - this.maxExp;
+        // this.level += 1;
+        // this.maxExp = this.level * 2;
+        // onLevelUp?.Invoke(this, EventArgs.Empty);
     }
     public int GetSize()
     {
@@ -91,21 +95,14 @@ public class Fish : MonoBehaviour
     {
         this.size = size;
     }
-    public int GetLevel()
-    {
-        return this.level;
-    }
-    public void SetLevel(int level)
-    {
-        this.level = level;
-    }
     public float GetExp()
     {
         return this.exp;
     }
     public float GetMaxExp()
     {
-        return this.maxExp;
+        // obsolete
+        return 0f;
     }
     public float GetScore()
     {

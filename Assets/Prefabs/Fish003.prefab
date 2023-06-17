@@ -48,9 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 3
   damage: 5
-  health: 0
-  exp: 6
-  maxExp: 0
+  exp: 4
   swimSpeed: 5
   sprintSpeed: 15
   fishSpawner: {fileID: 0}

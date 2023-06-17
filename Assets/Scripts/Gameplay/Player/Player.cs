@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
     }
     public void setHealth(float modifyValue)
     {
-        this.currentHealth = Mathf.Min(currentHealth + modifyValue, maxHealth);
+        this.currentHealth = Mathf.Max(currentHealth + modifyValue, 0);
     }
     public void LevelUp()
     {

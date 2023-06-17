@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,19 +13,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float staminaReduceRate = 10f; // Stamina reduce rate per second
     [SerializeField] private float staminaRecoveryRate = 2f; // Stamina recovery rate per second
     [SerializeField] private float healthReduceRate = 2f; // Health reduce rate per second
-
-
-
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
     [SerializeField] private GameObject Fish1;
     [SerializeField] private GameObject Fish2;
     [SerializeField] private GameObject Fish3;
+    [SerializeField] private ParticleSystem levelUpEffect;
+
     private Fish currentFish;
     public float exp = 0;
-
     private const float baseAnimationSpeed = 1.8f;
-
     private CharacterController characterController; // Reference to the CharacterController component
     private UnderWaterScript underWaterScript; // Reference to the UnderWaterScript component
     private bool isSprinting = false; // Flag to track sprinting state
@@ -165,9 +163,20 @@ public class Player : MonoBehaviour
     }
     public void LevelUp()
     {
+        ParticleSystem effectInstance = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
+        effectInstance.transform.parent = transform;
+        float effectDuration = effectInstance.main.duration;
+
         this.exp = this.exp - this.maxExp;
         this.level += 1;
         this.maxExp = this.level * 2;
+
+        StartCoroutine(WaitToGrow(effectDuration));
+    }
+
+    private IEnumerator WaitToGrow(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         GrowUp();
     }
     public int GetLevel()

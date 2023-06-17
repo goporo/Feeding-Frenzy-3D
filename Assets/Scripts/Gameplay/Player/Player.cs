@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 7;
     [SerializeField] private float sprintSpeedMultiplier = 10f; // Additional speed when sprinting
     [SerializeField] private float stamina = 10f; // Stamina for sprinting
+    [SerializeField] private float staminaReduceRate = 10f; // Stamina recovery rate per second
+
+    [SerializeField] private float staminaRecoveryRate = 2f; // Stamina recovery rate per second
+
 
     [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private EndGameCamera endGameCamera;
@@ -18,7 +22,8 @@ public class Player : MonoBehaviour
 
     private CharacterController characterController; // Reference to the CharacterController component
     private UnderWaterScript underWaterScript; // Reference to the UnderWaterScript component
-
+    private bool isSprinting = false; // Flag to track sprinting state
+    private float currentStamina; // Current stamina level
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -27,6 +32,8 @@ public class Player : MonoBehaviour
         Fish1.SetActive(true);
         currentFish = Fish1.GetComponent<Fish>();
         this.currentFish.onLevelUp += GrowUp;
+        currentStamina = stamina; // Initialize stamina to maximum value
+
     }
 
     private void Update()
@@ -40,13 +47,14 @@ public class Player : MonoBehaviour
             else
                 inputVector -= playerCamera.cameraDirection;
 
-            float animationSpeedMultiplier = Input.GetKey(KeyCode.LeftShift) ? sprintSpeedMultiplier : baseAnimationSpeed;
+            float animationSpeedMultiplier = isSprinting ? sprintSpeedMultiplier : baseAnimationSpeed;
             currentFish.SetAnimationSpeed(animationSpeedMultiplier);
 
             inputVector *= speed * animationSpeedMultiplier;
         }
         else
         {
+            isSprinting = false;
             currentFish.SetAnimationSpeed(baseAnimationSpeed);
         }
 
@@ -56,6 +64,19 @@ public class Player : MonoBehaviour
 
         Vector3 movement = inputVector * Time.deltaTime;
         characterController.Move(movement);
+
+        // Stamina mechanics
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        {
+            // Must have at least 10% stamina to sprint
+            isSprinting = currentStamina > 0.1f * stamina ? true : false;
+            currentStamina -= Time.deltaTime * staminaReduceRate;
+        }
+        else
+        {
+            isSprinting = false;
+            currentStamina = Mathf.Min(currentStamina + (staminaRecoveryRate * Time.deltaTime), stamina);
+        }
     }
 
     private void keepPlayerInPool()

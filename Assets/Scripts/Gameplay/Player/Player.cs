@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Fish2;
     [SerializeField] private GameObject Fish3;
     [SerializeField] private ParticleSystem levelUpEffect;
+    [SerializeField] private AudioClip biteFX;
+
 
     private Fish currentFish;
     public float exp = 0;
@@ -29,14 +31,15 @@ public class Player : MonoBehaviour
     private float currentStamina; // Current stamina level
     private float currentHealth;
     private int level = 1;
-
+    private AudioSource audioSource;
 
     private void Start()
     {
+        Fish1.SetActive(true);
         characterController = GetComponent<CharacterController>();
         underWaterScript = this.GetComponentInChildren<UnderWaterScript>();
+        audioSource = GetComponent<AudioSource>();
 
-        Fish1.SetActive(true);
         currentFish = Fish1.GetComponent<Fish>();
         currentStamina = maxStamina; // Initialize stamina to maximum value
         currentHealth = maxHealth;
@@ -96,13 +99,12 @@ public class Player : MonoBehaviour
         Vector3 waterCenter = this.underWaterScript.GetWaterCenterPoint();
         Vector3 playerPosition = transform.position;
 
-        // Prevent the player from jumping out of the water surface
+        // Prevent the player from going out of bounds
         if (playerPosition.y > waterHeight)
         {
             playerPosition.y = waterHeight;
         }
 
-        // Prevent the player from going outside the inner radius
         float distanceFromCenter = Vector3.Distance(playerPosition, waterCenter);
         if (distanceFromCenter > waterInnerRadius)
         {
@@ -110,14 +112,13 @@ public class Player : MonoBehaviour
             playerPosition = waterCenter + directionFromCenter * waterInnerRadius;
         }
 
+        // Basic movement
         characterController.Move(playerPosition - transform.position);
 
     }
 
-
     public void GrowUp()
     {
-        Debug.Log("Lvl cua ca: " + this.level);
         if (this.level > 5)
         {
             Fish3.SetActive(true);
@@ -131,8 +132,6 @@ public class Player : MonoBehaviour
             Fish1.SetActive(false);
         }
     }
-
-
 
     public float getExp()
     {
@@ -159,8 +158,9 @@ public class Player : MonoBehaviour
     }
     public void setHealth(float modifyValue)
     {
-        this.currentHealth = Mathf.Max(currentHealth + modifyValue, 0);
+        currentHealth = Mathf.Clamp(currentHealth + modifyValue, 0, maxHealth);
     }
+
     public void LevelUp()
     {
         ParticleSystem effectInstance = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
@@ -187,5 +187,11 @@ public class Player : MonoBehaviour
     {
         this.level = level;
     }
+    public void PlayBiteSound()
+    {
+        audioSource.clip = biteFX;
+        audioSource.Play();
+    }
+
 
 }

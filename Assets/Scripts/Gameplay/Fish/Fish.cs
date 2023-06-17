@@ -35,7 +35,7 @@ public class Fish : MonoBehaviour
         if (!this.GetComponentInParent<Player>()) return;
 
         Player player = this.GetComponentInParent<Player>();
-
+        player.PlayBiteSound();
         if (this.size > otherFish.size)
         // Player attack other fish
         {

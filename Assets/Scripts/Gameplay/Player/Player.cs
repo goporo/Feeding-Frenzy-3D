@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
@@ -20,10 +22,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Fish3;
     [SerializeField] private ParticleSystem levelUpEffect;
     [SerializeField] private AudioClip biteFX;
+    [SerializeField] private Image bloodSplatterImage;
+    [SerializeField] private Image bloodRadialImage;
+
+
 
 
     private Fish currentFish;
-    public float exp = 0;
+    [HideInInspector] public float exp = 0;
     private const float baseAnimationSpeed = 1.8f;
     private CharacterController characterController; // Reference to the CharacterController component
     private UnderWaterScript underWaterScript; // Reference to the UnderWaterScript component
@@ -32,6 +38,7 @@ public class Player : MonoBehaviour
     private float currentHealth;
     private int level = 1;
     private AudioSource audioSource;
+    private float hurtTimer = 0.2f;
 
     private void Start()
     {
@@ -159,6 +166,23 @@ public class Player : MonoBehaviour
     public void setHealth(float modifyValue)
     {
         currentHealth = Mathf.Clamp(currentHealth + modifyValue, 0, maxHealth);
+
+        // Take damage
+        if (modifyValue < 0 && currentHealth > 0)
+        {
+            StartCoroutine(HurtFlash());
+        }
+    }
+
+    IEnumerator HurtFlash()
+    {
+        bloodRadialImage.enabled = true;
+        bloodSplatterImage.enabled = true;
+        yield return new WaitForSeconds(hurtTimer);
+        bloodRadialImage.enabled = false;
+
+        // i want this to gradually fade then disable it
+        bloodSplatterImage.enabled = false;
     }
 
     public void LevelUp()

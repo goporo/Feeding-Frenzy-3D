@@ -126,17 +126,20 @@ public class Player : MonoBehaviour
 
     public void GrowUp()
     {
-        if (this.level > 5)
+        if (this.level == 6)
         {
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
             Fish2.SetActive(false);
+            Fish1.SetActive(false);
+            maxStamina *= 1.5f;
         }
-        else if (this.level > 3)
+        else if (this.level == 4)
         {
             Fish2.SetActive(true);
             currentFish = Fish2.GetComponent<Fish>();
             Fish1.SetActive(false);
+            maxStamina *= 1.5f;
         }
     }
 

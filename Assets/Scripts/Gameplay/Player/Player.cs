@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
             currentFish = Fish3.GetComponent<Fish>();
             Fish2.SetActive(false);
             fish4Icon.gameObject.SetActive(true);
+            maxStamina *= 1.5f;
         }
         else if (this.level > 4)
         {
@@ -148,6 +149,7 @@ public class Player : MonoBehaviour
             currentFish = Fish2.GetComponent<Fish>();
             Fish1.SetActive(false);
             fish3Icon.gameObject.SetActive(true);
+            maxStamina *= 1.5f;
         }
     }
 

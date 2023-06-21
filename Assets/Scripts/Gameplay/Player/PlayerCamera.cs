@@ -16,7 +16,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // Adjust the smoothing factor as per your preference
-    public float mouseSmoothing = 0.01f;
+    public float mouseSmoothing = 0f;
     // The value should be between 0 and 1, where 0 means no smoothing and 1 means maximum smoothing.
     private Vector2 smoothMouseInput;
 

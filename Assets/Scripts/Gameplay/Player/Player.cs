@@ -135,21 +135,19 @@ public class Player : MonoBehaviour
 
     public void GrowUp()
     {
-        if (this.level > 6)
+        if (this.level == 7)
         {
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
             Fish2.SetActive(false);
             fish4Icon.gameObject.SetActive(true);
-            maxStamina *= 1.5f;
         }
-        else if (this.level > 4)
+        else if (this.level == 5)
         {
             Fish2.SetActive(true);
             currentFish = Fish2.GetComponent<Fish>();
             Fish1.SetActive(false);
             fish3Icon.gameObject.SetActive(true);
-            maxStamina *= 1.5f;
         }
     }
 
@@ -234,10 +232,12 @@ public class Player : MonoBehaviour
     {
         return this.expUIController;
     }
-    public float GetMaxHealth(){
+    public float GetMaxHealth()
+    {
         return this.maxHealth;
     }
-    public float GetMaxStamina(){
+    public float GetMaxStamina()
+    {
         return this.maxStamina;
     }
 }

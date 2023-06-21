@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
     [SerializeField] private float maxHealth = 100f;
-    public float maxExp = 0;
+    public float maxExp = 2;
     [SerializeField] private float speed = 7f;
     [SerializeField] private float sprintSpeedMultiplier = 4f; // Additional speed when sprinting
     [SerializeField] private float maxStamina = 10f; // Stamina for sprinting
@@ -24,6 +24,12 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip biteFX;
     [SerializeField] private Image bloodSplatterImage;
     [SerializeField] private Image bloodRadialImage;
+    [SerializeField] private ExpUIController expUIController;
+    [SerializeField] private HealthUIController healthUIController;
+    [SerializeField] private StaminaUIController staminaUIController;
+    [SerializeField] private PlayerLevelUIController playerLevelUIController;
+    [SerializeField] private Image fish3Icon;
+    [SerializeField] private Image fish4Icon;
 
 
 
@@ -50,6 +56,8 @@ public class Player : MonoBehaviour
         currentFish = Fish1.GetComponent<Fish>();
         currentStamina = maxStamina; // Initialize stamina to maximum value
         currentHealth = maxHealth;
+        fish3Icon.gameObject.SetActive(false);
+        fish4Icon.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -96,7 +104,8 @@ public class Player : MonoBehaviour
 
         // Health mechanics
         currentHealth = currentHealth > 0 ? currentHealth - healthReduceRate * Time.deltaTime : 0;
-
+        healthUIController.SetPlayerHP(currentHealth);
+        staminaUIController.SetPlayerStamina(currentStamina);
     }
 
     private void keepPlayerInPool()
@@ -126,17 +135,19 @@ public class Player : MonoBehaviour
 
     public void GrowUp()
     {
-        if (this.level > 5)
+        if (this.level > 6)
         {
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
             Fish2.SetActive(false);
+            fish4Icon.gameObject.SetActive(true);
         }
-        else if (this.level > 3)
+        else if (this.level > 4)
         {
             Fish2.SetActive(true);
             currentFish = Fish2.GetComponent<Fish>();
             Fish1.SetActive(false);
+            fish3Icon.gameObject.SetActive(true);
         }
     }
 
@@ -187,6 +198,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+        playerLevelUIController.SetText(this.level);
         ParticleSystem effectInstance = Instantiate(levelUpEffect, transform.position, Quaternion.identity);
         effectInstance.transform.parent = transform;
         float effectDuration = effectInstance.main.duration;
@@ -216,6 +228,14 @@ public class Player : MonoBehaviour
         audioSource.clip = biteFX;
         audioSource.Play();
     }
-
-
+    public ExpUIController GetExpUIController()
+    {
+        return this.expUIController;
+    }
+    public float GetMaxHealth(){
+        return this.maxHealth;
+    }
+    public float GetMaxStamina(){
+        return this.maxStamina;
+    }
 }

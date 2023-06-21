@@ -47,7 +47,7 @@ public class Fish : MonoBehaviour
             player.exp += otherFish.exp;
             // Take health from other fish
             player.setHealth(otherFish.exp * 4);
-
+            player.GetExpUIController().OnPlayerEating(otherFish.exp);
             this.score += 10 + otherFish.size * 10;
             if (player.exp >= player.maxExp)
 

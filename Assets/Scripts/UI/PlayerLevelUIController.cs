@@ -11,11 +11,11 @@ public class PlayerLevelUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>(); 
-        Debug.Log(text.text);
+        text = GetComponent<TextMeshProUGUI>();
     }
 
-    public void SetText(float level){
-        text.text = level+"";
+    public void SetText(float level)
+    {
+        text.text = level + "";
     }
 }

@@ -11,12 +11,14 @@ public class ExpUIController : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        slider.value = maxExp/2;
+        slider.value = maxExp / 2;
         slider.maxValue = maxExp;
     }
-    public void OnPlayerEating(float exp){
+    public void OnPlayerEating(float exp)
+    {
         slider.value += exp;
-        if(slider.value > maxExp){
+        if (slider.value > maxExp)
+        {
             slider.value = maxExp;
         }
     }

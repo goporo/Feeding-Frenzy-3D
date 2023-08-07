@@ -40,19 +40,15 @@ public class Fish : MonoBehaviour
         // Player attack other fish
         {
             Instantiate(bloodSplatterEffect, this.transform.position, Quaternion.identity);
-            // Disable fish and then respawn them
             fishSpawner.DeactivateFish(otherFish);
 
-            // Take exp from otherFish
             player.exp += otherFish.exp;
-            // Take health from other fish
             player.setHealth(otherFish.exp * 4);
             player.GetExpUIController().OnPlayerEating(otherFish.exp);
-            this.score += 10 + otherFish.size * 10;
+            player.score += otherFish.exp * 10;
             if (player.exp >= player.maxExp)
 
             {
-                // if exp > Max exp in this level, Levelup this fish
                 player.LevelUp();
             }
         }
@@ -60,32 +56,9 @@ public class Fish : MonoBehaviour
         // Player get attacked by other fish
         else
         {
-            // need some delay
             player.setHealth(-otherFish.damage);
-            Debug.Log("Player get attacked " + player.getCurrentHealth() + "HP");
-
-            // Endgame(this);
         }
 
-    }
-    public void TakePresent()
-    {
-        this.swimSpeed *= 2;
-    }
-    private void Endgame(Fish otherFish)
-    {
-        Time.timeScale = 0;
-        otherFish.GetComponentInParent<Player>().GetEndGameCamera().OpenEndGameMenu();
-        otherFish.GetComponentInParent<Player>().gameObject.SetActive(false);
-    }
-    public void LevelUp()
-    {
-        // obsolete
-        return;
-        // this.exp = this.exp - this.maxExp;
-        // this.level += 1;
-        // this.maxExp = this.level * 2;
-        // onLevelUp?.Invoke(this, EventArgs.Empty);
     }
     public int GetSize()
     {
@@ -97,15 +70,10 @@ public class Fish : MonoBehaviour
     }
     public float GetExp()
     {
-        return this.exp;
-    }
-    public float GetMaxExp()
-    {
-        // obsolete
-        return 0f;
+        return exp;
     }
     public float GetScore()
     {
-        return this.score;
+        return score;
     }
 }

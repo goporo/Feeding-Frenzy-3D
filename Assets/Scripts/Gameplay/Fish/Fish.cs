@@ -43,7 +43,7 @@ public class Fish : MonoBehaviour
             fishSpawner.DeactivateFish(otherFish);
 
             player.exp += otherFish.exp;
-            player.setHealth(otherFish.exp * 4);
+            player.setHealth(otherFish.exp * 6);
             player.GetExpUIController().OnPlayerEating(otherFish.exp);
             player.score += otherFish.exp * 10;
             if (player.exp >= player.maxExp)

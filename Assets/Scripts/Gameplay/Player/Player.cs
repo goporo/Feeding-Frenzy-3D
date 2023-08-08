@@ -10,26 +10,18 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
     private float maxHealth = 100f;
     private float speed = 28f;
-    private float sprintSpeedMultiplier = 4f; // Additional speed when sprinting
-    private float maxStamina = 20f; // Stamina for sprinting
-    private float staminaReduceRate = 10f; // Stamina reduce rate per second
-    private float staminaRecoveryRate = 2f; // Stamina recovery rate per second
-    private float healthReduceRate = 2f; // Health reduce rate per second
-    [SerializeField] UIController uiController;
-
-    [SerializeField] private PlayerCamera playerCamera;
-    // [SerializeField] private EndGameCamera endGameCamera;
+    private float sprintSpeedMultiplier = 4f;
+    private float maxStamina = 20f;
+    private float staminaReduceRate = 10f;
+    private float staminaRecoveryRate = 2.5f;
+    private float healthReduceRate = 3f;
     private GameObject Fish1;
     private GameObject Fish2;
     private GameObject Fish3;
+    [SerializeField] UIController uiController;
+    [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private ParticleSystem levelUpEffect;
     [SerializeField] private AudioClip biteFX;
-
-
-
-
-
-
 
     [HideInInspector] public float maxExp = 2;
     [HideInInspector] public float exp = 0;
@@ -105,7 +97,17 @@ public class Player : MonoBehaviour
         }
 
         // Health mechanics
-        currentHealth = currentHealth > 0 ? currentHealth - healthReduceRate * Time.deltaTime : 0;
+        if (currentHealth > 0)
+        {
+            currentHealth -= healthReduceRate * Time.deltaTime;
+        }
+        else if (!uiController.isDead)
+        {
+            currentHealth = 0;
+            uiController.isDead = true;
+            uiController.ShowMenu();
+
+        }
 
         uiController.UpdateHealth(currentHealth);
         uiController.UpdateStamina(currentStamina);
@@ -139,11 +141,11 @@ public class Player : MonoBehaviour
     {
         if (level == 7)
         {
-
             Fish3.SetActive(true);
             currentFish = Fish3.GetComponent<Fish>();
             Fish2.SetActive(false);
             uiController.GrowUp2();
+            healthReduceRate = 5f;
 
         }
         else if (level == 5)
@@ -152,6 +154,7 @@ public class Player : MonoBehaviour
             currentFish = Fish2.GetComponent<Fish>();
             Fish1.SetActive(false);
             uiController.GrowUp1();
+            healthReduceRate = 4f;
         }
     }
 

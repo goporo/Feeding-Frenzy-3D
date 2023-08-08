@@ -104,9 +104,9 @@ public class FishSpawner : MonoBehaviour
         float choice = UnityEngine.Random.value;
         if (choice <= 0.6f)
             return fishV0Prefab;
-        else if (choice <= 0.88f)
+        else if (choice <= 0.85f)
             return fishV1Prefab;
-        else if (choice <= 0.98f)
+        else if (choice <= 0.96f)
             return fishV2Prefab;
         else
             return fishV3Prefab;

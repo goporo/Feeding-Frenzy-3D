@@ -7,7 +7,8 @@ public class ExpText : MonoBehaviour
 {
     [SerializeField] Text expText;
     [SerializeField] Player player;
-    private void Update() {
-        expText.text = player.getExp() + "/" + player.getMaxExp();
+    private void Update()
+    {
+        expText.text = player.GetExp() + "/" + player.GetMaxExp();
     }
 }

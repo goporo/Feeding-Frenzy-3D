@@ -101,6 +101,7 @@ namespace AQUAS_Lite
             reflectionCamera.transform.eulerAngles = new Vector3(0, euler.y, euler.z);
 
             reflectionCamera.Render();
+
             // Cant prevent the minor bug, so decided to disable the logging
             // Screen position out of view frustum (screen pos 256.000000, 0.000000, 5000.000000) (Camera rect 0 0 256 256)
             // UnityEngine.StackTraceUtility:ExtractStackTrace ()

@@ -158,12 +158,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float getExp()
+    public float GetExp()
     {
         return exp;
     }
 
-    public float getMaxExp()
+    public float GetMaxExp()
     {
         return maxExp;
     }
@@ -177,11 +177,11 @@ public class Player : MonoBehaviour
     // {
     //     return endGameCamera;
     // }
-    public float getCurrentHealth()
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }
-    public void setHealth(float modifyValue)
+    public void SetHealth(float modifyValue)
     {
         currentHealth = Mathf.Clamp(currentHealth + modifyValue, 0, maxHealth);
 

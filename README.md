@@ -1,4 +1,6 @@
 # FrenzyFish 3D
+publish
+https://goporo.itch.io/frenzy-fish-3d
 
 fish asset
 https://assetstore.unity.com/packages/3d/characters/animals/fish/fish-polypack-202232
